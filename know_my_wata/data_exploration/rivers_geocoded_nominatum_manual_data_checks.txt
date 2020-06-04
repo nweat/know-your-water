@@ -1,0 +1,169 @@
+location,name,type,lat,lon
+
+臺北市淡水河本流,not found, REPLACE WITH 新北市淡水河
+臺北市基隆河,|基隆河, 承德路一段, 建明里, 建成, 大同區, 臺北市, 10355, Taiwan|,water,25.066195999999998,121.57044132348297, OK
+臺北市景美溪,|景美溪, 深坑區, 新北市, 11643, Taiwan|,river,25.0006543,121.6211164, OK
+臺北市新店溪,|新店溪, 石碇區, 新北市, 23242, Taiwan|,river,24.9356671,121.6238436, OK
+基隆市基隆河,|基隆河, 七堵區, 基隆市, 臺灣省, 221, Taiwan|,river,25.0824293,121.6824405, OK
+
+
+新北市大漢溪,|大漢溪, 復興區, 桃園市, 22056, Taiwan|,river,24.8106604,121.3470731, OK
+新北市淡水河本流,not found, REPLACE WITH 新北市淡水河 
+新北市三峽河,|三峽河, 三峽區, 新北市, 237, Taiwan|,river,24.8703362,121.410329, OK
+新北市新店溪,|新店溪, 石碇區, 新北市, 23242, Taiwan|,river,24.9356671,121.6238436, REPLACE WITH 臺北市新店溪
+新北市景美溪,|景美溪, 深坑區, 新北市, 11643, Taiwan|,river,25.0006543,121.6211164, REPLACE WITH 臺北市景美溪
+新北市磺溪,|磺溪, 金山區, 新北市, 208, Taiwan|,river,25.2060804,121.5928126, OK
+新北市基隆河,not found, REPLACE WITH 基隆市基隆河
+新北市雙溪,|雙溪, 雙溪區, 新北市, 22742, Taiwan|,river,25.0331832,121.85431, OK
+
+
+CHECK
+桃園市福興溪,|福興, 中福里, 蘆竹區, 桃園市, 338, Taiwan|,hamlet,25.000111,121.262222, REPLACE WITH 新竹縣福興溪
+桃園市社子溪,|社子溪, 楊梅區, 桃園市, 32647, Taiwan|,river,24.9462113,121.1064526, OK
+桃園市老街溪,|老街溪, 大園區, 桃園市, 33756, Taiwan|,river,25.072351,121.1877394, REPLACE WITH 中壢市老街溪
+桃園市茄苳溪(桃),not found, REPLACE WITH 茄苳溪, Taoyuan, Taoyuan District, Taoyuan, 330, Taiwan
+桃園市南崁溪,|南崁溪, 蘆竹區, 桃園市, 338, Taiwan|,water,25.05712305,121.28184049873714, REPLACE WITH Nankan River, Guishan District, Taoyuan, 333, Taiwan 
+桃園市大漢溪,|大漢溪, 復興區, 桃園市, 22056, Taiwan|,river,24.8106604,121.3470731, OK
+ADD NEW BUT NEEDS RECHECK 老街溪 river is not all connected:
+老街溪, Dayuan District, Taoyuan, 33756, Taiwan
+老街溪, Longtan District, Taoyuan, 325, Taiwan 
+Laojie River, Longtan District, Taoyuan, 325, Taiwan
+茄苳溪, Bade District, Taoyuan, 33058, Taiwan
+茄苳溪, Bade District, Taoyuan, 33453, Taiwan
+大坑崁溪, Pingzhen District, Taoyuan, 32559, Taiwan
+石門大圳, Pingzhen District, Taoyuan, 33551, Taiwan
+
+新竹市鹽港溪,|鹽港溪, 香山區, 新竹市, 臺灣省, 30095, Taiwan|,river,24.7292437,120.9417855, OK
+新竹市客雅溪,|客雅溪, 東區, 新竹市, 臺灣省, 30063, Taiwan|,river,24.7755228,120.9720361, REPLACE WITH keya creek hsinchu
+新竹市頭前溪,|頭前溪, 經國路三段, 中雅里, 南寮, 北區, 新竹市, 臺灣省, 30046, Taiwan|,water,24.825590050000002,120.982096668787, OK
+新竹縣鹽港溪,not found, REPLACE WITH 新竹市鹽港溪
+新竹縣客雅溪,|客雅溪, 寶山鄉, 新竹縣, 臺灣省, 308, Taiwan|,river,24.7664825,121.008836, REPLACE WITH keya creek hsinchu
+新竹縣頭前溪,|頭前溪, 新竹縣, 臺灣省, 30055, Taiwan|,river,24.7417595,121.095924, OK
+新竹縣鳳山溪,|鳳山溪, 正義路, 崎下, 西安里, 關西鎮, 新竹縣, 臺灣省, 306, Taiwan|,water,24.81720555,121.10050556210426, OK
+新竹縣茄苳溪(竹),|茄苳溪, 新豐鄉, 新竹縣, 臺灣省, 30352, Taiwan|,river,24.8878129,120.9865376, OK
+新竹縣新豐溪,|新豐溪, 新竹縣, 臺灣省, 30447, Taiwan|,river,24.9115291,121.0331708, OK
+新竹縣福興溪,|福興溪, 新竹縣, 臺灣省, 30301, Taiwan|,river,24.9377069,121.0526955, OK
+ADD NEW:
+霄裡溪, Xinpu, Hsinchu County, Taiwan Province, 305, Taiwan
+上坪溪, Zhudong, Hsinchu County, Taiwan Province, 311, Taiwan
+
+苗栗縣大安溪,|大安溪, 苗栗縣, 臺灣省, 42450, Taiwan|,river,24.3724822,120.9612463, OK
+苗栗縣西湖溪,|西湖溪, 苗栗縣, 臺灣省, 368, Taiwan|,river,24.4902094,120.7784421, OK
+苗栗縣後龍溪,|後龍溪, 苗栗縣, 臺灣省, 36344, Taiwan|,river,24.5388006,120.8243293, OK
+苗栗縣南港溪(苗),not found, REPLACE WITH 苗栗縣中港溪
+苗栗縣中港溪,|中港溪, 苗栗縣, 臺灣省, 35343, Taiwan|,river,24.6049129,120.9961781, OK 
+ADD NEW:
+南港溪, Zaoqiao, Miaoli County, Taiwan Province, 361, Taiwan
+老庄溪, Miaoli County, Taiwan Province, 369, Taiwan
+
+臺中市筏子溪,|筏子溪, 西屯區, 臺中市, 429, Taiwan|,river,24.1849071,120.6293365, OK
+臺中市旱溪,|旱溪, 烏日區, 臺中市, 414, Taiwan|,river,24.1021422,120.6374163, OK
+臺中市烏溪,|无锡市, 江苏省, 214000, China 中国|,administrative,31.5776264,120.2951311, REPLACE WITH 旱溪排水大里 41473
+臺中市大甲溪,|大甲溪, 和平區, 臺中市, 42354, Taiwan|,river,24.2331511,120.9635925, OK
+臺中市大安溪,|大安溪, 經國路, 溪埔子, 江南里, 日南, 大甲區, 臺中市, 43755, Taiwan|,bus_stop,24.3660263,120.641883, REPLACE WITH 苗栗縣大安溪
+彰化縣烏溪,|喜樂, 北平路二段, 賴興里, 北區, 臺中市, 404, Taiwan|,restaurant,24.1713829,120.6782191, REPLACE WITH 臺中市大里溪
+ADD NEW:
+旱溪, Hanxi Village, East District, Taichung, 401, Taiwan
+旱溪排水, Dali District, Taichung, 41473, Taiwan 
+旱溪, Dunnan Village, Houli District, Taichung, 42147, Taiwan
+旱溪, Xintian Village, Tanzi District, Taichung, 40647, Taiwan
+旱溪, Wuri District, Taichung, 414, Taiwan
+
+南投縣清水溪(投),not found, REPLACE WITH 清水溪, Nantou County, Taiwan Province, 55759, Taiwan 
+南投縣濁水溪水溪,|濁水溪, 南投縣, 臺灣省, 55344, Taiwan|,river,23.8170823,120.8433757, OK
+南投縣北港溪(投),not found, REPLACE WITH 南港溪, Nantou County, Taiwan Province, 544, Taiwan
+南投縣烏溪,|烏溪, 國姓鄉, 南投縣, 臺灣省, 41491, Taiwan|,river,24.0579009,120.8901522, OK
+ADD NEW:
+南投貓羅溪  (start Fengyuan end in Zhongliao Changhua)
+
+
+CHECK
+雲林縣北港溪(雲),not found, REPLACE WITH 雲林縣北港溪
+雲林縣新虎尾溪,|新虎尾溪, 雲林縣, 臺灣省, 64743, Taiwan|,river,23.7445485,120.4139179, OK
+雲林縣濁水溪,|濁水溪, 燕巢區, 高雄市, 824, Taiwan|,stream,22.8004867,120.381333, CHECK
+
+
+嘉義縣八掌溪,|八掌溪, 白河區, 臺南市, 732, Taiwan|,river,23.4114954,120.406736, OK (under Tainan)
+嘉義市八掌溪,not found
+嘉義縣朴子溪,|朴子溪, 嘉義縣, 臺灣省, 614, Taiwan|,river,23.5049552,120.3877433, OK
+嘉義市朴子溪,not found
+嘉義縣三疊溪,|三疊溪, 嘉義縣, 臺灣省, 62249, Taiwan|,river,23.5740382,120.4773749, OK
+
+
+臺南市二仁溪,|二仁溪, 關廟區, 臺南市, 718, Taiwan|,river,22.9024568,120.3248103, OK
+臺南市鹽水溪,|鹽水溪, 永康區, 臺南市, 710, Taiwan|,river,23.0212091,120.2817594, OK
+臺南市曾文溪,|曾文溪, 楠西區, 臺南市, 715, Taiwan|,river,23.2201184,120.4930045, OK
+臺南市急水溪,|急水溪, 新營區, 臺南市, 730, Taiwan|,river,23.3062494,120.3292684, OK
+臺南市八掌溪,|八掌溪, 白河區, 臺南市, 732, Taiwan|,river,23.4114954,120.406736, OK
+ADD NEW:
+谷溪
+
+
+
+高雄市高屏溪,|高屏溪, 六龜區, 高雄市, 844, Taiwan|,river,23.0709474,120.6837494, OK
+高雄市阿公店溪,|阿公店溪, 岡山區, 高雄市, 820, Taiwan|,river,22.8006402,120.2864931, OK
+高雄市二仁溪,not found
+旗山溪, Jiaxian District, Kaohsiung, 847, Taiwan
+ADD NEW:
+旗山溪, Jiaxian District, Kaohsiung, 847, Taiwan
+
+
+CHECK
+屏東縣港口溪,|港口溪, 滿州鄉, 屏東縣, 臺灣省, 947, Taiwan|,river,22.0509889,120.8267356
+屏東縣保力溪,|保力溪, 屏東縣, 臺灣省, 944, Taiwan|,river,22.0664764,120.7557749
+屏東縣四重溪,|四重溪, 屏東縣, 臺灣省, 945, Taiwan|,river,22.1266104,120.7822196
+屏東縣楓港溪,|楓港溪, 屏東縣, 臺灣省, 943, Taiwan|,stream,22.2166776,120.7729217
+屏東縣枋山溪,|枋山溪, 屏東縣, 臺灣省, 941, Taiwan|,river,22.275191,120.7150675
+屏東縣率芒溪,|率芒溪, 屏東縣, 臺灣省, 942, Taiwan|,river,22.3930953,120.6744722
+屏東縣林邊溪,|林邊溪, 屏東縣, 臺灣省, 92241, Taiwan|,river,22.5238859,120.6348763, OK
+屏東縣東港溪,|東港溪, 萬巒鄉, 屏東縣, 臺灣省, 923, Taiwan|,river,22.5770206,120.6242723
+屏東縣高屏溪,not found
+ADD NEW:
+東港溪, Neipu, Pingtung County, Taiwan Province, 912, Taiwan
+牛稠溪, Pingtung County, Taiwan Province, 90049, Taiwan
+
+
+臺東縣卑南溪,|卑南溪, 關山鎮, 臺東縣, 臺灣省, 956, Taiwan|,river,23.0149207,121.1640668, OK
+臺東縣太平溪,|太平溪, 臺東縣, 臺灣省, 95023, Taiwan|,river,22.7939897,121.09733, OK
+臺東縣利嘉溪,|利嘉溪, 臺東縣, 臺灣省, 95062, Taiwan|,river,22.7433156,121.0051694, OK
+臺東縣知本溪,|知本溪, 臺東縣, 臺灣省, Taiwan|,river,22.6596063,120.9365911, OK
+ADD NEW:
+Taiping River, Tai'an Village, Beinan, Taitung County, Taiwan Province, 954, Taiwan
+Luye River, Taoyuan Village, Yanping, Taitung County, Taiwan Province, 953, Taiwan
+七家灣溪, Heping District, Taichung, 42413, Taiwan
+
+
+花蓮縣立霧溪,|立霧溪, 花蓮縣, 臺灣省, 972, Taiwan|,river,24.1782003,121.4765221, OK
+花蓮縣三棧溪,|三棧溪, 花蓮縣, 臺灣省, 971, Taiwan|,river,24.0831072,121.5541238, OK
+花蓮縣美崙溪,|美崙溪, 花蓮縣, 臺灣省, 97059, Taiwan|,river,24.0008125,121.5651216, OK
+花蓮縣吉安溪,|吉安溪 (七腳川溪), 吉安鄉, 花蓮縣, 臺灣省, 973, Taiwan|,river,23.9761158,121.5790462 REPLACE WITH 吉安溪 (七腳川溪), Hualien County, Taiwan Province, 97342, Taiwan
+花蓮縣木瓜溪,|木瓜溪, 秀林鄉, 花蓮縣, 臺灣省, 972, Taiwan|,river,23.9703325,121.4801381, OK BUT NOT COMPLETE RIVER
+花蓮縣花蓮溪,|花蓮溪, 花蓮縣, 臺灣省, 979, Taiwan|,river,23.7461256,121.37623, OK
+花蓮縣秀姑巒溪,|秀姑巒溪, 玉里鎮, 花蓮縣, 臺灣省, 981, Taiwan|,river,23.337091,121.3300874, OK
+ADD NEW:
+花蓮太平溪
+Lele River, Zhuoxi, Hualien County, Taiwan Province, 982, Taiwan
+荖溪, Shoufeng, Hualien County, Taiwan Province, 974, Taiwan
+壽豐溪(知亞干溪), Wanrong, Hualien County, Taiwan Province, 979, Taiwan 
+
+
+宜蘭縣得子口溪,|得子口溪, 宜蘭縣, 臺灣省, 26244, Taiwan|,river,24.8154006,121.7671014
+宜蘭縣蘭陽溪,|蘭陽溪, 大同鄉, 宜蘭縣, 臺灣省, 267, Taiwan|,river,24.6098966,121.5327044
+宜蘭縣冬山河,|冬山河, 冬山鄉, 宜蘭縣, 臺灣省, 269, Taiwan|,river,24.6445902,121.7914189
+宜蘭縣新城溪,|新城溪, 宜蘭縣, 臺灣省, 26948, Taiwan|,river,24.594269,121.7927345
+宜蘭縣蘇澳溪,|蘇澳溪, 宜蘭縣, 臺灣省, 270, Taiwan|,river,24.573872,121.841303
+宜蘭縣南澳溪,|南奧溪, 宜蘭縣, 臺灣省, 27244, Taiwan|,river,24.5329943,121.7169998
+宜蘭縣和平溪,|和平溪, 宜蘭縣, 臺灣省, Taiwan|,river,24.3981148,121.5843567
+ADD NEW:
+南澳南溪
+林尾溪
+
+
+
+
+
+
+
+
+
+
