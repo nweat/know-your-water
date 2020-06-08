@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
+import LeafletMap from './LeafletMap';
+import NavContainer from './NavContainer';
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      <div>testt</div>
+    <div className="row">
+      <div className="col s12">
+        <NavContainer />
+        <LeafletMap />
+      </div>
     </div>
   );
 };

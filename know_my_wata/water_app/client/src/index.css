@@ -1,0 +1,89 @@
+html,
+body {
+  height: 100vh;
+}
+
+img#logo {
+  height: 90px;
+  margin-top: -12px;
+  margin-left: 25px;
+}
+
+.loader {
+  position: absolute;
+  margin: auto;
+  top: 80%;
+  bottom: 0;
+  left: 90%;
+  right: 0;
+  z-index: 9999;
+}
+
+/* override leaflet css */
+.leaflet-container {
+  height: 100vh;
+  width: 100%;
+}
+
+/* override materialize css */
+.row .col {
+  padding: 0;
+}
+
+.sidenav {
+  box-shadow: none;
+  background-color: rgba(222, 230, 238, 0.6);
+}
+
+.sidenav .collapsible-body,
+.sidenav.fixed .collapsible-body {
+  border: 0;
+  background-color: rgba(222, 230, 238, 0.6);
+}
+
+/* change colour of filled in check box */
+.checkbox-blue[type='checkbox'].filled-in:checked + span:not(.lever):after {
+  border: 2px solid #01b2e1;
+  background-color: #01b2e1;
+}
+
+[type='checkbox'].filled-in:not(:checked) + span:not(.lever):after {
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 2px solid #008eff;
+  top: 0px;
+  z-index: 0;
+}
+
+.sidenav .collapsible label {
+  color: black;
+}
+
+.sidenav .collapsible .divider {
+  height: 1px;
+  overflow: hidden;
+  background-color: #fbf9ff;
+}
+
+.sidenav .collapsible .col.s12 {
+  width: 100%;
+  margin-left: 1.5rem;
+  left: auto;
+  right: auto;
+  margin-bottom: -10px;
+}
+
+header,
+main,
+footer {
+  padding-left: 300px;
+}
+
+@media only screen and (max-width: 992px) {
+  header,
+  main,
+  footer {
+    padding-left: 0;
+  }
+}
