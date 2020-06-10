@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import M from 'materialize-css/dist/js/materialize';
+import Filter from './Filter';
 
 const NavContainer = () => {
   useEffect(() => {
@@ -27,27 +28,7 @@ const NavContainer = () => {
           <img src="logo.png" id="logo" alt="logo" />
         </li>
         <li>
-          <ul className="collapsible collapsible-accordion">
-            <li>
-              <div className="collapsible-header">
-                <i className="material-icons">filter_list</i>Filter
-              </div>
-              <div className="collapsible-body">
-                <div className="col s12">
-                  <label>
-                    <input type="checkbox" className="filled-in checkbox-blue" />
-                    <span>River</span>
-                  </label>
-                </div>
-                <div className="col s12">
-                  <label>
-                    <input type="checkbox" className="filled-in checkbox-blue" />
-                    <span>Dam</span>
-                  </label>
-                </div>
-              </div>
-            </li>
-          </ul>
+          <Filter />
         </li>
         <li>
           <ul className="collapsible collapsible-accordion">

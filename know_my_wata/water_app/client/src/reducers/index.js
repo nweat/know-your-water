@@ -1,13 +1,8 @@
 import { combineReducers } from 'redux';
-import * as actions from '../actions/types';
-
-const riverStationsReducer = (state = [], action) => {
-  if (action.type == actions.GET_RIVER_STATIONS) {
-    return action.payload;
-  }
-  return state;
-};
+import { riverStationsReducer } from '../reducers/riverStationsReducer';
+import { visibilityFilterReducer } from '../reducers/visibilityFilterReducer';
 
 export default combineReducers({
-  river_stations: riverStationsReducer
+  river_stations: riverStationsReducer,
+  visibility: visibilityFilterReducer
 });

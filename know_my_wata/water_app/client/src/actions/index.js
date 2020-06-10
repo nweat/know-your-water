@@ -8,3 +8,14 @@ export const fetchRiverStations = () => async dispatch => {
     payload: response.data
   });
 };
+
+export const setLayerVisibility = (visible, filter) => ({
+  type: actions.SET_LAYER_VISIBILITY,
+  payload: { filter, visible }
+});
+
+export const visibilityFilters = {
+  RIVER_STATIONS: 'RIVER_STATIONS',
+  GDWATER_STATIONS: 'GDWATER_STATIONS',
+  DAM_STATIONS: 'DAM_STATIONS'
+};

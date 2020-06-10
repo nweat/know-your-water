@@ -20,7 +20,7 @@ const LeafletMap = () => {
         id="mapbox/streets-v11"
       />
       <Rivers />
-      <RiverStations enabled={true} />
+      <RiverStations />
     </Map>
   );
 };
