@@ -15,7 +15,7 @@ const Filter = () => {
     <ul className="collapsible collapsible-accordion">
       <li className="active">
         <div className="collapsible-header">
-          <i className="material-icons">filter_list</i>Filter
+          <i className="material-icons">filter_list</i>Layers
         </div>
         <div className="collapsible-body">
           <div className="col s12">
@@ -26,13 +26,27 @@ const Filter = () => {
                 className="filled-in checkbox-blue"
                 onChange={e => handleCheckBoxChange(e, visibilityFilters.RIVER_STATIONS)}
               />
-              <span>River</span>
+              <span>River Stations</span>
             </label>
+            <ul class="collection">
+              <li class="collection-item">
+                <span class="legend-icon" style={{ backgroundColor: '#008000' }}></span> Non (Slightly) polluted
+              </li>
+              <li class="collection-item">
+                <span class="legend-icon" style={{ backgroundColor: '#FFA500' }}></span> Lightly polluted
+              </li>
+              <li class="collection-item">
+                <span class="legend-icon" style={{ backgroundColor: '#FF4500' }}></span> Moderately polluted
+              </li>
+              <li class="collection-item">
+                <span class="legend-icon" style={{ backgroundColor: '#FF0000' }}></span> Severely polluted
+              </li>
+            </ul>
           </div>
           <div className="col s12">
             <label>
               <input type="checkbox" className="filled-in checkbox-blue" onChange={e => handleCheckBoxChange(e, visibilityFilters.DAM_STATIONS)} />
-              <span>Dam</span>
+              <span>Dam Stations</span>
             </label>
           </div>
         </div>

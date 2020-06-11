@@ -9,6 +9,13 @@ img#logo {
   margin-left: 25px;
 }
 
+.legend-icon {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 .loader {
   position: absolute;
   margin: auto;

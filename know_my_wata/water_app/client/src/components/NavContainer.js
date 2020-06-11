@@ -50,6 +50,16 @@ const NavContainer = () => {
             </li>
           </ul>
         </li>
+        <li>
+          <ul className="collapsible collapsible-accordion">
+            <li>
+              <div className="collapsible-header">
+                <i className="material-icons">info_outline</i>Data Sources
+              </div>
+              <div className="collapsible-body"></div>
+            </li>
+          </ul>
+        </li>
       </ul>
       {/* <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>*/}
     </div>
