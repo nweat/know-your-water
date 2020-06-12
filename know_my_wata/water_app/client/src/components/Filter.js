@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setLayerVisibility, visibilityFilters } from '../actions';
-import useLayerVisibility from './useLayerVisibility';
+import useLayerVisibility from '../hooks/useLayerVisibility';
+import * as colors from '../utils/Colors';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -28,18 +29,18 @@ const Filter = () => {
               />
               <span>River Stations</span>
             </label>
-            <ul class="collection">
-              <li class="collection-item">
-                <span class="legend-icon" style={{ backgroundColor: '#008000' }}></span> Non (Slightly) polluted
+            <ul className="collection">
+              <li className="collection-item">
+                <span className="legend-icon" style={{ backgroundColor: colors.riverLegend.not_polluted }}></span> Non (Slightly) polluted
               </li>
-              <li class="collection-item">
-                <span class="legend-icon" style={{ backgroundColor: '#FFA500' }}></span> Lightly polluted
+              <li className="collection-item">
+                <span className="legend-icon" style={{ backgroundColor: colors.riverLegend.lightly_polluted }}></span> Lightly polluted
               </li>
-              <li class="collection-item">
-                <span class="legend-icon" style={{ backgroundColor: '#FF4500' }}></span> Moderately polluted
+              <li className="collection-item">
+                <span className="legend-icon" style={{ backgroundColor: colors.riverLegend.moderately_polluted }}></span> Moderately polluted
               </li>
-              <li class="collection-item">
-                <span class="legend-icon" style={{ backgroundColor: '#FF0000' }}></span> Severely polluted
+              <li className="collection-item">
+                <span className="legend-icon" style={{ backgroundColor: colors.riverLegend.severely_polluted }}></span> Severely polluted
               </li>
             </ul>
           </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LeafletMap from './LeafletMap';
 import NavContainer from './NavContainer';
 

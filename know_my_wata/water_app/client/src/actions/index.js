@@ -9,6 +9,25 @@ export const fetchRiverStations = () => async dispatch => {
   });
 };
 
+export const setDefaultLocation = () => async dispatch => {
+  const options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+
+  window.navigator.geolocation.getCurrentPosition(
+    pos => {
+      dispatch({
+        type: actions.SET_DEFAULT_LOCATION,
+        payload: { lat: pos.coords.latitude, lon: pos.coords.longitude }
+      });
+    },
+    err => {},
+    options
+  );
+};
+
 export const setLayerVisibility = (visible, filter) => ({
   type: actions.SET_LAYER_VISIBILITY,
   payload: { filter, visible }

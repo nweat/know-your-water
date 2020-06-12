@@ -1,9 +1,11 @@
 import React from 'react';
 import { CircleMarker, Popup } from 'react-leaflet';
 import { visibilityFilters } from '../actions';
-import useRiverStations from './useRiverStations';
-import useLayerVisibility from './useLayerVisibility';
+import useRiverStations from '../hooks/useRiverStations';
+import useLayerVisibility from '../hooks/useLayerVisibility';
 import Spinner from './Spinner';
+import * as icons from '../utils/Icons';
+import * as colors from '../utils/Colors';
 
 const RiverStations = () => {
   const stations = useRiverStations();
@@ -16,13 +18,13 @@ const RiverStations = () => {
 
   const getColor = ({ river_pollution_index_mean }) => {
     if (river_pollution_index_mean > 2 && river_pollution_index_mean <= 3) {
-      return '#FFA500';
+      return colors.riverLegend.lightly_polluted;
     } else if (river_pollution_index_mean >= 3.1 && river_pollution_index_mean <= 6) {
-      return '#FF4500';
+      return colors.riverLegend.moderately_polluted;
     } else if (river_pollution_index_mean > 6) {
-      return '#FF0000';
+      return colors.riverLegend.severely_polluted;
     } else {
-      return '#008000';
+      return colors.riverLegend.not_polluted;
     }
   };
 
