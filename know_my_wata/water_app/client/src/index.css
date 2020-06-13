@@ -4,9 +4,7 @@ body {
 }
 
 img#logo {
-  height: 90px;
-  margin-top: -12px;
-  margin-left: 25px;
+  height: 100px;
 }
 
 .legend-icon {
@@ -39,13 +37,13 @@ img#logo {
 
 .sidenav {
   box-shadow: none;
-  background-color: rgba(222, 230, 238, 0.6);
+  background-color: rgba(222, 230, 238, 0.9);
 }
 
 .sidenav .collapsible-body,
 .sidenav.fixed .collapsible-body {
   border: 0;
-  background-color: rgba(222, 230, 238, 0.6);
+  background-color: rgba(222, 230, 238, 0.9);
 }
 
 /* change colour of filled in check box */
@@ -93,4 +91,44 @@ footer {
   footer {
     padding-left: 0;
   }
+}
+
+.collapsible li.active .expand {
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+}
+
+.rotate {
+  -moz-transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.collapsible-header .expand {
+  position: absolute;
+  right: 0px;
+}
+
+.collapsible .collection {
+  margin: 15px;
+  border: none;
+  margin-left: 33px;
+  margin-top: -10px;
+}
+
+.collection .collection-item {
+  background-color: transparent;
+  line-height: 1.8rem;
+  padding: 10px 20px;
+  margin: 0;
+  font-size: 12px;
+}
+
+select {
+  width: 80%;
+  padding: 5px;
+  border: 1px solid #f2f2f2;
+  border-radius: 10px;
+  height: 2.5rem;
 }

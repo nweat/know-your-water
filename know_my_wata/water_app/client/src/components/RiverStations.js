@@ -5,7 +5,7 @@ import useRiverStations from '../hooks/useRiverStations';
 import useLayerVisibility from '../hooks/useLayerVisibility';
 import Spinner from './Spinner';
 import * as icons from '../utils/Icons';
-import * as colors from '../utils/Colors';
+import * as styles from '../utils/MapStyles';
 
 const RiverStations = () => {
   const stations = useRiverStations();
@@ -18,19 +18,27 @@ const RiverStations = () => {
 
   const getColor = ({ river_pollution_index_mean }) => {
     if (river_pollution_index_mean > 2 && river_pollution_index_mean <= 3) {
-      return colors.riverLegend.lightly_polluted;
+      return styles.riverLegend.lightly_polluted;
     } else if (river_pollution_index_mean >= 3.1 && river_pollution_index_mean <= 6) {
-      return colors.riverLegend.moderately_polluted;
+      return styles.riverLegend.moderately_polluted;
     } else if (river_pollution_index_mean > 6) {
-      return colors.riverLegend.severely_polluted;
+      return styles.riverLegend.severely_polluted;
     } else {
-      return colors.riverLegend.not_polluted;
+      return styles.riverLegend.not_polluted;
     }
   };
 
   const generateRiverStationMarkers = () => {
     return stations.map(station => (
-      <CircleMarker key={station.station_no} onEachFeature={onEachFeature} center={[station.lat, station.lon]} color={getColor(station)} radius={5}>
+      <CircleMarker
+        fillOpacity={styles.riverStationCircleMarker.fillOpacity}
+        weight={styles.riverStationCircleMarker.weight}
+        key={station.station_no}
+        onEachFeature={onEachFeature}
+        center={[station.lat, station.lon]}
+        color={getColor(station)}
+        radius={styles.riverStationCircleMarker.radius}
+      >
         <Popup>
           <b> Station: {station.station_no} </b>
           <br /> {station.address}
