@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map, TileLayer } from 'react-leaflet';
+import { Map, TileLayer, ZoomControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import Rivers from './Rivers';
 import RiverStations from './RiverStations';
@@ -16,6 +16,7 @@ const LeafletMap = () => {
         url="https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibndlYXQiLCJhIjoiY2syMGZ0bzBmMDBhaTNvbzNsNm9mdmJyeCJ9.DN7vZvDaDUa-JLaP5gXQjQ"
         id="mapbox/streets-v11"
       />
+      <ZoomControl position="bottomright" />
       <Rivers />
       <RiverStations />
     </Map>
