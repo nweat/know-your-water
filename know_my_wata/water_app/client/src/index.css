@@ -41,9 +41,15 @@ img#logo {
 }
 
 .sidenav .collapsible-body,
-.sidenav.fixed .collapsible-body {
+.sidenav-fixed .collapsible-body {
   border: 0;
   background-color: rgba(222, 230, 238, 0.9);
+}
+
+@media only screen and (max-width: 992px) {
+  .sidenav.sidenav-fixed {
+    transform: translateX(0%) !important;
+  }
 }
 
 /* change colour of filled in check box */
