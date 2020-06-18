@@ -4,55 +4,58 @@ import { visibilityFilters } from '../actions';
 import useRiverStations from '../hooks/useRiverStations';
 import useLayerVisibility from '../hooks/useLayerVisibility';
 import Spinner from './Spinner';
-import * as icons from '../utils/Icons';
-import * as styles from '../utils/MapStyles';
+import { RIVER_RPI, RIVER_PH, riverStationCircleMarker } from '../data/defaults';
 
 const RiverStations = () => {
   const stations = useRiverStations();
   const isVisible = useLayerVisibility(visibilityFilters.RIVER_STATIONS);
 
-  const onEachFeature = (feature, layer) => {
-    const popupContent = `<b> Station:  + ${feature.station_no} + </b><br/> + ${feature.address}`;
-    layer.bindPopup(popupContent);
-  };
-
-  const getColor = ({ river_pollution_index_mean }) => {
-    if (river_pollution_index_mean > 2 && river_pollution_index_mean <= 3) {
-      return styles.riverLegend.lightly_polluted;
-    } else if (river_pollution_index_mean >= 3.1 && river_pollution_index_mean <= 6) {
-      return styles.riverLegend.moderately_polluted;
-    } else if (river_pollution_index_mean > 6) {
-      return styles.riverLegend.severely_polluted;
-    } else {
-      return styles.riverLegend.not_polluted;
+  const getColor = ({ mean }) => {
+    if (stations.type === RIVER_RPI) {
+      if (mean > 2 && mean <= 3) {
+        return stations.legend[1].color;
+      } else if (mean >= 3.1 && mean <= 6) {
+        return stations.legend[2].color;
+      } else if (mean > 6) {
+        return stations.legend[3].color;
+      } else {
+        return stations.legend[0].color;
+      }
+    } else if (stations.type === RIVER_PH) {
+      if (mean > 7) {
+        return 'red';
+      } else {
+        return 'red';
+      }
     }
   };
 
   const generateRiverStationMarkers = () => {
-    return stations.map(station => (
+    return stations.data.map(station => (
       <CircleMarker
-        fillOpacity={styles.riverStationCircleMarker.fillOpacity}
-        weight={styles.riverStationCircleMarker.weight}
+        fillOpacity={riverStationCircleMarker.fillOpacity}
+        weight={riverStationCircleMarker.weight}
         key={station.station_no}
-        onEachFeature={onEachFeature}
         center={[station.lat, station.lon]}
         color={getColor(station)}
-        radius={styles.riverStationCircleMarker.radius}
+        radius={riverStationCircleMarker.radius}
       >
         <Popup>
           <b> Station: {station.station_no} </b>
           <br /> {station.address}
           <br /> <b>Stats:</b>
-          <br /> Min RPI: {station.river_pollution_index_min}
-          <br /> Mean RPI: {station.river_pollution_index_mean}
-          <br /> Max RPI: {station.river_pollution_index_max}
+          <br /> Min {stations.type}: {station.min}
+          <br /> Mean {stations.type}: {station.mean}
+          <br /> Max {stations.type}: {station.max}
         </Popup>
       </CircleMarker>
     ));
   };
 
+  console.log(stations);
+
   if (isVisible) {
-    return stations ? generateRiverStationMarkers() : <Spinner />;
+    return stations.data ? generateRiverStationMarkers() : <Spinner />;
   }
   return '';
 };

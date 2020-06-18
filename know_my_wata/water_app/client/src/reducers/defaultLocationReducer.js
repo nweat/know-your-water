@@ -1,8 +1,7 @@
 import * as actions from '../actions/types';
+import { defaultLocation } from '../data/defaults';
 
-const initState = { lat: 23.755182, lon: 120.877075 };
-
-export const defaultLocationReducer = (state = initState, action) => {
+export const defaultLocationReducer = (state = defaultLocation, action) => {
   if (action.type === actions.SET_DEFAULT_LOCATION) {
     return action.payload;
   }

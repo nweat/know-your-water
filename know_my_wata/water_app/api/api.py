@@ -2,7 +2,7 @@ import time
 import json
 import pandas as pd
 import numpy as np
-from flask import Flask, make_response, jsonify
+from flask import Flask, make_response, jsonify, request
 
 app = Flask(__name__)
 
@@ -14,18 +14,38 @@ def river_stations():
     return jsonify(result)
 
 
-@app.route('/river_station_stats_rpi')
-def riverstats_rpi():
-    df = pd.read_json('../../data_exploration/river.json')
-    df['river_pollution_index'] = df['river_pollution_index'].replace('--', np.nan)
-    df = df.dropna(subset=['river_pollution_index'])
-    df = df.astype({'river_pollution_index': 'float'})
-    df = df.groupby(['sampling_month_year', 'station_no', 'address', 'lat', 'lon']).agg(
+@app.route('/river_station_stats')
+def river_station_stats():
+    YEAR = 2019
+    FIELD = request.args.get('field')
+    FIELD_MISSING = FIELD + '_missing'
+    MISSING_VALUE = '--'
+
+    df = pd.read_json('../data/final/river.json')
+    df = df[df['sampling_year'] == YEAR]
+    df[FIELD] = df[FIELD].replace(MISSING_VALUE, np.nan)
+    df = df.astype({FIELD: 'float'})
+    df[FIELD_MISSING] = df[FIELD].isna()
+    df = df.groupby(['sampling_year', 'station_no', 'address', 'lat', 'lon']).agg(
         {
-            'river_pollution_index': ['min', 'max', 'mean']
-        }).round(1)
-    # combine hierarchical columns due to grouby
+            FIELD: ['min', 'max', 'mean', 'count'],
+            FIELD_MISSING: ['sum', 'mean']
+        }
+    )
     df.columns = ['_'.join(col).strip() for col in df.columns.values]
+    df = df.astype({FIELD_MISSING + '_sum': 'int32'})
+    df[FIELD_MISSING + '_mean'] = df[FIELD_MISSING + '_mean'].round(4) * 100
+    df[FIELD + '_mean'] = df[FIELD + '_mean'].round(2)
+
+    df.rename(columns={
+        FIELD + '_min': "min",
+        FIELD + '_max': "max",
+        FIELD + '_mean': "mean",
+        FIELD + '_count': "count",
+        FIELD_MISSING + '_sum': "num_missing",
+        FIELD_MISSING + '_mean': "perc_missing",
+    }, inplace=True)
     df = df.reset_index()
-    df_dict = df.to_dict(orient='records')
-    return jsonify(df_dict)
+    print(df.head(5))
+    df_json = df.to_json(orient='records')
+    return df_json

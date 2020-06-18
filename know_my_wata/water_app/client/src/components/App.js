@@ -1,12 +1,12 @@
 import React from 'react';
 import LeafletMap from './LeafletMap';
-import NavContainer from './NavContainer';
+import SideBar from './SideBar';
 
 const App = () => {
   return (
     <div className="row">
       <div className="col s12">
-        <NavContainer />
+        <SideBar />
         <LeafletMap />
       </div>
     </div>
