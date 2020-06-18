@@ -1,10 +1,24 @@
-## Know My Wata
-
 ### Data preparation and exploration with Jupyter notebook
 
-`data_exploration.ipynb`
+Prepare data and generate JSON files which will be consumed on the client side
+
+### Pre-requisites
+
+```
+pip install pandas
+pip install notebook
+pip install simplejson
+pip install geocoder
+```
+
+### Run Jupyter
 
 ```
 jupyter notebook
 ```
-# know-your-water
+
+### Open notebook
+
+```
+data_exploration.ipynb
+```

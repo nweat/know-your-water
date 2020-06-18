@@ -1,4 +1,0 @@
-pandas
-notebook
-simplejson
-geocoder
