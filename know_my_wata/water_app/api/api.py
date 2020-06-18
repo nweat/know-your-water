@@ -46,6 +46,5 @@ def river_station_stats():
         FIELD_MISSING + '_mean': "perc_missing",
     }, inplace=True)
     df = df.reset_index()
-    print(df.head(5))
     df_json = df.to_json(orient='records')
     return df_json

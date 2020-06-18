@@ -49,8 +49,12 @@ export const riverstat_legends = [
     type: RIVER_PH,
     legend: [
       {
-        name: 'OK 8',
-        color: '#008CC1'
+        name: '4',
+        color: '#D90259'
+      },
+      {
+        name: '5',
+        color: '#E3625B'
       }
     ]
   }
