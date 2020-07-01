@@ -2,12 +2,13 @@ import * as actions from './types';
 import axios from 'axios';
 import { riverstat_legends } from '../data/defaults';
 
-export const fetchRiverStats = field => async dispatch => {
-  const response = await axios.get('/river_station_stats?field=' + field);
+export const fetchRiverStats = (field, year) => async dispatch => {
+  const response = await axios.get('/river_station_stats?field=' + field + '&year=' + year);
   const legend = riverstat_legends.find(item => item.type === field).legend;
+  const description = riverstat_legends.find(item => item.type === field).description;
   dispatch({
     type: actions.GET_RIVER_STATIONS,
-    payload: { data: response.data, type: field, legend }
+    payload: { data: response.data, type: field, year, legend, description }
   });
 };
 

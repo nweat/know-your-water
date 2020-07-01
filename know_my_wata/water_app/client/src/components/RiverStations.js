@@ -1,10 +1,11 @@
 import React from 'react';
-import { CircleMarker, Popup } from 'react-leaflet';
+import { CircleMarker, Popup, Marker } from 'react-leaflet';
 import { visibilityFilters } from '../actions';
 import useRiverStations from '../hooks/useRiverStations';
 import useLayerVisibility from '../hooks/useLayerVisibility';
 import Spinner from './Spinner';
 import { RIVER_RPI, RIVER_PH, riverStationCircleMarker } from '../data/defaults';
+import { greenIcon } from '../utils/Icons';
 
 const RiverStations = () => {
   const stations = useRiverStations();
@@ -22,10 +23,16 @@ const RiverStations = () => {
         return stations.legend[0].color;
       }
     } else if (stations.type === RIVER_PH) {
-      if (mean > 7) {
-        return 'red';
+      if (mean >= 8) {
+        return stations.legend[4].color;
+      } else if (mean >= 7) {
+        return stations.legend[3].color;
+      } else if (mean >= 6) {
+        return stations.legend[2].color;
+      } else if (mean >= 5) {
+        return stations.legend[1].color;
       } else {
-        return 'red';
+        return stations.legend[0].color;
       }
     }
   };
@@ -52,12 +59,10 @@ const RiverStations = () => {
     ));
   };
 
-  console.log(stations);
-
   if (isVisible) {
     return stations.data ? generateRiverStationMarkers() : <Spinner />;
   }
-  return '';
+  return <Spinner />;
 };
 
 export default RiverStations;

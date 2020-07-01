@@ -1,10 +1,12 @@
 export const defaultLocation = { lat: 23.755182, lon: 120.877075 };
-export const defaultZoom = 12;
+export const defaultZoom = 11;
 
 //fields must appear as in the raw dataset
 export const RIVER_RPI = 'rpi';
 export const RIVER_PH = 'PH';
 export const DAM_CTSI = 'CTSI';
+export const RIVER_RPI_DEFAULT_YEAR = 2019;
+export const DEFAULT_YEARS = [2019, 2018, 2017];
 
 export const selectFilters = {
   RIVER_STATIONS: [RIVER_RPI, RIVER_PH],
@@ -26,6 +28,7 @@ export const riverStationCircleMarker = {
 export const riverstat_legends = [
   {
     type: RIVER_RPI,
+    description: 'this is rpi description',
     legend: [
       {
         name: 'Not Polluted (1)',
@@ -47,14 +50,27 @@ export const riverstat_legends = [
   },
   {
     type: RIVER_PH,
+    description: 'this is PH description',
     legend: [
       {
         name: '4',
-        color: '#D90259'
+        color: '#DC7633'
       },
       {
         name: '5',
-        color: '#E3625B'
+        color: '#EB984E '
+      },
+      {
+        name: '6',
+        color: '#F5B041'
+      },
+      {
+        name: '7',
+        color: '#F4D03F'
+      },
+      {
+        name: '8+',
+        color: '#138D75'
       }
     ]
   }

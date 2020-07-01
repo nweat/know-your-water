@@ -2,18 +2,20 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import M from 'materialize-css/dist/js/materialize';
 import { setLayerVisibility, visibilityFilters, fetchRiverStats } from '../actions';
-import { RIVER_RPI, selectFilters } from '../data/defaults';
+import { RIVER_RPI, RIVER_RPI_DEFAULT_YEAR, DEFAULT_YEARS, selectFilters } from '../data/defaults';
 import useLayerVisibility from '../hooks/useLayerVisibility';
+import useRiverStations from '../hooks/useRiverStations';
 import Legend from '../components/Legend';
 
 const Layers = () => {
   const dispatch = useDispatch();
+  const stations = useRiverStations();
   const defaultChecked = useLayerVisibility(visibilityFilters.RIVER_STATIONS);
 
   useEffect(() => {
     let select = document.querySelectorAll('select');
     M.FormSelect.init(select, {});
-    dispatch(fetchRiverStats(RIVER_RPI));
+    dispatch(fetchRiverStats(RIVER_RPI, RIVER_RPI_DEFAULT_YEAR));
   }, []);
 
   function handleLayerVisibility(e, filterFor) {
@@ -21,13 +23,25 @@ const Layers = () => {
   }
 
   function handleRiverStatChange(e) {
-    dispatch(fetchRiverStats(e.target.value));
+    dispatch(fetchRiverStats(e.target.value, stations.year));
+  }
+
+  function handleYearChange(e) {
+    dispatch(fetchRiverStats(stations.type, e.target.value));
   }
 
   const generateSelectOptions = list => {
     return list.map(field => (
       <option value={field} key={field}>
         {field.toUpperCase()}
+      </option>
+    ));
+  };
+
+  const generateYearList = () => {
+    return DEFAULT_YEARS.map(year => (
+      <option value={year} key={year}>
+        {year}
       </option>
     ));
   };
@@ -41,6 +55,9 @@ const Layers = () => {
         </div>
         <div className="collapsible-body">
           <div className="col s12">
+            <select onChange={e => handleYearChange(e)} className="browser-default year">
+              {generateYearList()}
+            </select>
             <label>
               <input
                 type="checkbox"
@@ -51,12 +68,21 @@ const Layers = () => {
               <span>River Stations</span>
             </label>
 
-            <select onChange={e => handleRiverStatChange(e)} className="browser-default">
-              {generateSelectOptions(selectFilters.RIVER_STATIONS)}
-            </select>
-            <label></label>
+            <div className="col s9">
+              <select onChange={e => handleRiverStatChange(e)} className="browser-default">
+                {generateSelectOptions(selectFilters.RIVER_STATIONS)}
+              </select>
+            </div>
 
-            <Legend type="river" />
+            <div className=""></div>
+
+            <a className="modal-trigger" href="#modal1">
+              <i className="material-icons">info_outline</i>
+            </a>
+
+            <div className="col s8">
+              <Legend type="river" />
+            </div>
           </div>
 
           <div className="col s12">

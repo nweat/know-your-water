@@ -16,7 +16,7 @@ def river_stations():
 
 @app.route('/river_station_stats')
 def river_station_stats():
-    YEAR = 2019
+    YEAR = int(request.args.get('year'))
     FIELD = request.args.get('field')
     FIELD_MISSING = FIELD + '_missing'
     MISSING_VALUE = '--'
@@ -46,5 +46,6 @@ def river_station_stats():
         FIELD_MISSING + '_mean': "perc_missing",
     }, inplace=True)
     df = df.reset_index()
+    df = df.dropna(how='any', subset=['min'])
     df_json = df.to_json(orient='records')
     return df_json
