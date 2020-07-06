@@ -75,3 +75,24 @@ export const riverstat_legends = [
     ]
   }
 ];
+
+export const damstat_legends = [
+  {
+    type: DAM_CTSI,
+    description: 'this is ctsi description',
+    legend: [
+      {
+        name: 'Oligotrophic (< 40)',
+        color: '#EE4A0D'
+      },
+      {
+        name: 'Mesotrophic (40 <= CTSI <= 50)',
+        color: '#EEE00D'
+      },
+      {
+        name: 'Eutrophic (> 50)',
+        color: '#39BA39'
+      }
+    ]
+  }
+];

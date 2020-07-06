@@ -3,6 +3,20 @@ body {
   height: 100vh;
 }
 
+header,
+main,
+footer {
+  padding-left: 300px;
+}
+
+@media only screen and (max-width: 992px) {
+  header,
+  main,
+  footer {
+    padding-left: 0;
+  }
+}
+
 img#logo {
   height: 100px;
 }
@@ -31,6 +45,12 @@ img#logo {
 }
 
 /* override materialize css */
+
+.modal-trigger .material-icons {
+  margin-left: 15px;
+  line-height: 2;
+}
+
 .row .col {
   padding: 0;
 }
@@ -46,35 +66,17 @@ img#logo {
   background-color: rgba(222, 230, 238, 0.9);
 }
 
-@media only screen and (max-width: 992px) {
-  .sidenav.sidenav-fixed {
-    transform: translateX(0%) !important;
-  }
-}
-
-/* change colour of filled in check box */
-.checkbox-blue[type='checkbox'].filled-in:checked + span:not(.lever):after {
-  border: 2px solid #01b2e1;
-  background-color: #01b2e1;
-}
-
-[type='checkbox'].filled-in:not(:checked) + span:not(.lever):after {
-  height: 20px;
-  width: 20px;
-  background-color: transparent;
-  border: 2px solid #008eff;
-  top: 0px;
-  z-index: 0;
+.sidenav .collapsible-header {
+  border-bottom: 1px solid #ddd;
+  line-height: 30px;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: 10px;
 }
 
 .sidenav .collapsible label {
   color: black;
-}
-
-.sidenav .collapsible .divider {
-  height: 1px;
-  overflow: hidden;
-  background-color: #fbf9ff;
 }
 
 .sidenav .collapsible .col.s12 {
@@ -85,18 +87,9 @@ img#logo {
   margin-bottom: -10px;
 }
 
-header,
-main,
-footer {
-  padding-left: 300px;
-}
-
-@media only screen and (max-width: 992px) {
-  header,
-  main,
-  footer {
-    padding-left: 0;
-  }
+.collapsible-header .expand {
+  position: absolute;
+  right: 0px;
 }
 
 .collapsible li.active .expand {
@@ -111,18 +104,6 @@ footer {
   transition: all 0.3s linear;
 }
 
-.collapsible-header .expand {
-  position: absolute;
-  right: 0px;
-}
-
-.collapsible .collection {
-  margin: 15px;
-  border: none;
-  margin-left: 9px;
-  margin-top: -10px;
-}
-
 .collection .collection-item {
   background-color: transparent;
   line-height: 1.8rem;
@@ -131,13 +112,62 @@ footer {
   font-size: 12px;
 }
 
+.collapsible .collection {
+  margin: 15px;
+  border: none;
+  margin-left: 0px;
+}
+
+.collapsible li.active .row {
+  margin-bottom: 0px;
+}
+
+.collapsible .chip {
+  font-size: 14px;
+  font-weight: 500;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+@media only screen and (max-width: 992px) {
+  .sidenav.sidenav-fixed {
+    transform: translateX(0%) !important;
+  }
+}
+
+/* change colour of filled in check box */
+.checkbox-blue[type='checkbox'].filled-in:checked + span:not(.lever):after {
+  border: 2px solid #01b2e1;
+  background-color: #01b2e1;
+}
+
+[type='checkbox'] + span:not(.lever) {
+  display: '';
+  margin-left: 1rem;
+  height: 16px;
+}
+
+[type='checkbox'].filled-in:not(:checked) + span:not(.lever):after {
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 2px solid #008eff;
+  top: 0px;
+  z-index: 0;
+}
+
 select {
-  width: 80%;
+  background-color: transparent;
+  width: 81%;
   padding: 5px;
-  border: 1px solid #7ea2ff;
-  border-radius: 6px;
+  border: none;
+  border-radius: 0px;
   height: 2rem;
   margin-bottom: 10px;
+}
+
+.select-wrapper input.select-dropdown {
+  font-size: 14px;
 }
 
 select:focus {

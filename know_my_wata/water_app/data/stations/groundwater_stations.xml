@@ -305,7 +305,7 @@
 <Start_Date>1900-01-01T00:00:00+08:00</Start_Date>
 <Status_Of_Use>2</Status_Of_Use>
 <Station_Order>0</Station_Order>
-<Station_EName>Chung Hsin Electric & Machinery Mfg. Corp., Ltd.</Station_EName>
+<Station_EName>Chung Hsin Electric and Machinery Mfg. Corp., Ltd.</Station_EName>
 <Station_EAddress>
 128, Guangming Rd., Erchong Village, Jhudong Township, Hsinchu County
 </Station_EAddress>
@@ -1917,7 +1917,7 @@ Singnan Rd. Bus Station, Jiali Dist., Tainan City
 <Start_Date>1900-01-01T00:00:00+08:00</Start_Date>
 <Status_Of_Use>2</Status_Of_Use>
 <Station_Order>0</Station_Order>
-<Station_EName>Lida Agriculture & Livestock Co., Ltd.</Station_EName>
+<Station_EName>Lida Agriculture and Livestock Co., Ltd.</Station_EName>
 <Station_EAddress>11, Yaliao Village, Lujhu Dist. , Kaohsiung City</Station_EAddress>
 </dt_tmp>
 <dt_tmp diffgr:id="dt_tmp105" msdata:rowOrder="104">
@@ -5590,7 +5590,7 @@ NO.113.Longgang Village. Dongshih Township. Chiayi County 61444. Taiwan (R.O.C.
 <Site_Tel/>
 <Tube_Type/>
 <Station_EName>
-Kao Yuan Senior High School of Technology & Commerce
+Kao Yuan Senior High School of Technology and Commerce
 </Station_EName>
 <Station_EAddress>
 1, Yuliao Rd., Donglin Village, Ciaotou Dist. , Kaohsiung City
@@ -8446,7 +8446,7 @@ No.15, Jhongshan St., Touwu Township, Miaoli County
 <Site_Code>1</Site_Code>
 <Site_Tel/>
 <Tube_Type/>
-<Station_EName>Miao Lih Agriculturial & Industrial High School</Station_EName>
+<Station_EName>Miao Lih Agriculturial and Industrial High School</Station_EName>
 <Station_EAddress>268, Yuwei Rd., Miaoli City</Station_EAddress>
 <Gis_X>120.8335090</Gis_X>
 <Gis_Y>24.5562780</Gis_Y>
