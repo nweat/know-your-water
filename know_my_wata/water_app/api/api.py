@@ -14,14 +14,15 @@ def river_stations():
     return jsonify(result)
 
 
-@app.route('/river_station_stats')
-def river_station_stats():
+@app.route('/epa_data_stats')
+def epa_data_stats():
     YEAR = int(request.args.get('year'))
+    DATA_TYPE = request.args.get('dtype')
     FIELD = request.args.get('field')
     FIELD_MISSING = FIELD + '_missing'
     MISSING_VALUE = '--'
 
-    df = pd.read_json('../data/final/river.json')
+    df = pd.read_json('../data/final/' + DATA_TYPE + '.json')
     df = df[df['sampling_year'] == YEAR]
     df[FIELD] = df[FIELD].replace(MISSING_VALUE, np.nan)
     df = df.astype({FIELD: 'float'})

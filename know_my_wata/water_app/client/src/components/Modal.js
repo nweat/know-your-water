@@ -8,7 +8,7 @@ const Modal = ({ message }) => {
   }, []);
 
   return (
-    <div id="modal1" className="modal">
+    <div id="modal1" className="modal bottom-sheet">
       <div className="modal-content">
         <h4>Modal Header</h4>
         <p>{message}</p>

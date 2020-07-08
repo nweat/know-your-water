@@ -1,33 +1,30 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import M from 'materialize-css/dist/js/materialize';
-import { setLayerVisibility, visibilityFilters, fetchRiverStats } from '../actions';
-import { RIVER_RPI, RIVER_RPI_DEFAULT_YEAR, DEFAULT_YEARS, selectFilters } from '../data/defaults';
 import useLayerVisibility from '../hooks/useLayerVisibility';
-import useRiverStations from '../hooks/useRiverStations';
-import Legend from '../components/Legend';
+import { setLayerVisibility, fetchEPAStats } from '../actions';
+import Legend from './Legend';
 
-const Layers = () => {
+const Layers = ({ layerText, layerIcon, layer, dataType, defaultField, year, action, legend, yearList, fieldList, stations }) => {
   const dispatch = useDispatch();
-  const stations = useRiverStations();
-  const defaultChecked = useLayerVisibility(visibilityFilters.RIVER_STATIONS);
+  const defaultChecked = useLayerVisibility(layer);
 
   useEffect(() => {
     let select = document.querySelectorAll('select');
     M.FormSelect.init(select, {});
-    dispatch(fetchRiverStats(RIVER_RPI, RIVER_RPI_DEFAULT_YEAR));
+    dispatch(fetchEPAStats(defaultField, year, action, legend, dataType));
   }, []);
 
   function handleLayerVisibility(e, filterFor) {
     dispatch(setLayerVisibility(e.target.checked, filterFor));
   }
 
-  function handleRiverStatChange(e) {
-    dispatch(fetchRiverStats(e.target.value, stations.year));
+  function handleStatChange(e) {
+    dispatch(fetchEPAStats(e.target.value, stations.year, action, legend, dataType));
   }
 
   function handleYearChange(e) {
-    dispatch(fetchRiverStats(stations.type, e.target.value));
+    dispatch(fetchEPAStats(stations.type, e.target.value, action, legend, dataType));
   }
 
   const generateSelectOptions = list => {
@@ -39,7 +36,7 @@ const Layers = () => {
   };
 
   const generateYearList = () => {
-    return DEFAULT_YEARS.map(year => (
+    return yearList.map(year => (
       <option value={year} key={year}>
         {year}
       </option>
@@ -52,20 +49,14 @@ const Layers = () => {
         <div className="row">
           <div className="col s1">
             <label>
-              <input
-                type="checkbox"
-                checked={defaultChecked}
-                className="filled-in checkbox-blue"
-                onChange={e => handleLayerVisibility(e, visibilityFilters.RIVER_STATIONS)}
-              />
+              <input type="checkbox" checked={defaultChecked} className="filled-in checkbox-blue" onChange={e => handleLayerVisibility(e, layer)} />
               <span></span>
             </label>
           </div>
           <div className="col s11">
             <div className="collapsible-header">
               <div className="chip">
-                <img src="river.png" alt="River" />
-                River Stations
+                <img src={layerIcon} alt={layerText} /> {layerText}
               </div>
               <i className="material-icons rotate right expand">expand_more</i>
             </div>
@@ -79,7 +70,7 @@ const Layers = () => {
             </div>
             <div className="col s1"></div>
             <div className="col s4">
-              <select onChange={e => handleRiverStatChange(e)}>{generateSelectOptions(selectFilters.RIVER_STATIONS)}</select>
+              <select onChange={e => handleStatChange(e)}>{generateSelectOptions(fieldList)}</select>
             </div>
             <div className="col s1">
               <a className="modal-trigger" href="#modal1">
@@ -89,7 +80,7 @@ const Layers = () => {
           </div>
 
           <div className="col s12">
-            <Legend type="river" />
+            <Legend type={dataType} />
           </div>
         </div>
       </li>

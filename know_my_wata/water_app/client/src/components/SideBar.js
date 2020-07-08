@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import M from 'materialize-css/dist/js/materialize';
-import Layers from './Layers';
+import useRiverStations from '../hooks/useRiverStations';
+import * as actions from '../actions/types';
+import { visibilityFilters } from '../actions';
+import { riverstat_legends } from '../data/defaults';
+import { RIVER_RPI, RIVER_RPI_DEFAULT_YEAR, DEFAULT_YEARS, selectFilters } from '../data/defaults';
+import Layer from './Layer';
 
 const SideBar = () => {
   useEffect(() => {
@@ -17,7 +22,19 @@ const SideBar = () => {
           <img src="logo.png" id="logo" alt="logo" />
         </li>
         <li>
-          <Layers />
+          <Layer
+            layerText="River Stations"
+            layerIcon="river.png"
+            layer={visibilityFilters.RIVER_STATIONS}
+            dataType="river"
+            defaultField={RIVER_RPI}
+            year={RIVER_RPI_DEFAULT_YEAR}
+            action={actions.GET_RIVER_STATIONS}
+            legend={riverstat_legends}
+            yearList={DEFAULT_YEARS}
+            fieldList={selectFilters.RIVER_STATIONS}
+            stations={useRiverStations()}
+          />
         </li>
         <li>
           <ul className="collapsible collapsible-accordion">
