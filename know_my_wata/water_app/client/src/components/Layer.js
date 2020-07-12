@@ -27,7 +27,7 @@ const Layers = ({ layerText, layerIcon, layer, dataType, defaultField, year, act
     dispatch(fetchEPAStats(stations.type, e.target.value, action, legend, dataType));
   }
 
-  const generateSelectOptions = list => {
+  const generateFieldOptions = list => {
     return list.map(field => (
       <option value={field} key={field}>
         {field.toUpperCase()}
@@ -49,7 +49,7 @@ const Layers = ({ layerText, layerIcon, layer, dataType, defaultField, year, act
         <div className="row">
           <div className="col s1">
             <label>
-              <input type="checkbox" checked={defaultChecked} className="filled-in checkbox-blue" onChange={e => handleLayerVisibility(e, layer)} />
+              <input className="with-gap" name="group1" type="radio" checked={defaultChecked} onChange={e => handleLayerVisibility(e, layer)} />
               <span></span>
             </label>
           </div>
@@ -70,7 +70,7 @@ const Layers = ({ layerText, layerIcon, layer, dataType, defaultField, year, act
             </div>
             <div className="col s1"></div>
             <div className="col s4">
-              <select onChange={e => handleStatChange(e)}>{generateSelectOptions(fieldList)}</select>
+              <select onChange={e => handleStatChange(e)}>{generateFieldOptions(fieldList)}</select>
             </div>
             <div className="col s1">
               <a className="modal-trigger" href="#modal1">
@@ -88,4 +88,4 @@ const Layers = ({ layerText, layerIcon, layer, dataType, defaultField, year, act
   );
 };
 
-export default Layers;
+export default React.memo(Layers);

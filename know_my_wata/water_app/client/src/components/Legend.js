@@ -1,12 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import useStationLegend from '../hooks/useStationLegend';
+import { RIVER_DATASET_NAME, DAM_DATASET_NAME } from '../data/defaults';
 
 const Legend = ({ type }) => {
-  const state = useSelector(state => state);
+  const legend_state = useStationLegend();
   let legend;
 
-  if (type === 'river') {
-    legend = state.river_stations.legend;
+  if (type === RIVER_DATASET_NAME) {
+    legend = legend_state.river;
+  } else if (type === DAM_DATASET_NAME) {
+    legend = legend_state.dam;
   }
 
   const generateLegend = () => {
@@ -25,4 +28,4 @@ const Legend = ({ type }) => {
   return '';
 };
 
-export default Legend;
+export default React.memo(Legend);

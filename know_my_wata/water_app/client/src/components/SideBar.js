@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import M from 'materialize-css/dist/js/materialize';
-import useRiverStations from '../hooks/useRiverStations';
+import useRiverStationsYearType from '../hooks/useRiverStationsYearType';
+import useDamStationsYearType from '../hooks/useDamStationsYearType';
 import * as actions from '../actions/types';
+import * as defaults from '../data/defaults';
 import { visibilityFilters } from '../actions';
-import { riverstat_legends } from '../data/defaults';
-import { RIVER_RPI, RIVER_RPI_DEFAULT_YEAR, DEFAULT_YEARS, selectFilters } from '../data/defaults';
 import Layer from './Layer';
 
 const SideBar = () => {
@@ -26,14 +26,29 @@ const SideBar = () => {
             layerText="River Stations"
             layerIcon="river.png"
             layer={visibilityFilters.RIVER_STATIONS}
-            dataType="river"
-            defaultField={RIVER_RPI}
-            year={RIVER_RPI_DEFAULT_YEAR}
+            dataType={defaults.RIVER_DATASET_NAME}
+            defaultField={defaults.RIVER_RPI}
+            year={defaults.RIVER_RPI_DEFAULT_YEAR}
             action={actions.GET_RIVER_STATIONS}
-            legend={riverstat_legends}
-            yearList={DEFAULT_YEARS}
-            fieldList={selectFilters.RIVER_STATIONS}
-            stations={useRiverStations()}
+            legend={defaults.riverstat_legends}
+            yearList={defaults.DEFAULT_YEARS}
+            fieldList={defaults.selectFilters.RIVER_STATIONS}
+            stations={useRiverStationsYearType()}
+          />
+        </li>
+        <li>
+          <Layer
+            layerText="Dam Stations"
+            layerIcon="dam.png"
+            layer={visibilityFilters.DAM_STATIONS}
+            dataType={defaults.DAM_DATASET_NAME}
+            defaultField={defaults.DAM_CTSI}
+            year={defaults.DAM_CTSI_DEFAULT_YEAR}
+            action={actions.GET_DAM_STATIONS}
+            legend={defaults.damstat_legends}
+            yearList={defaults.DEFAULT_YEARS}
+            fieldList={defaults.selectFilters.DAM_STATIONS}
+            stations={useDamStationsYearType()}
           />
         </li>
         <li>
@@ -51,4 +66,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default React.memo(SideBar);

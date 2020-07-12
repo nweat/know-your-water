@@ -3,6 +3,7 @@ import { Map, TileLayer, ZoomControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import Rivers from './Rivers';
 import RiverStations from './RiverStations';
+import DamStations from './DamStations';
 import useDefaultLocation from '../hooks/useDefaultLocation';
 import { defaultZoom } from '../data/defaults';
 
@@ -20,6 +21,7 @@ const LeafletMap = () => {
       <ZoomControl position="bottomright" />
       <Rivers />
       <RiverStations />
+      <DamStations />
     </Map>
   );
 };

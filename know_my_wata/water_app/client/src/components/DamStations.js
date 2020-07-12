@@ -1,43 +1,29 @@
 import React from 'react';
 import { CircleMarker, Popup, Marker } from 'react-leaflet';
 import { visibilityFilters } from '../actions';
-import useRiverStations from '../hooks/useRiverStations';
+import useDamStations from '../hooks/useDamStations';
 import useLayerVisibility from '../hooks/useLayerVisibility';
 import Spinner from './Spinner';
-import { RIVER_RPI, RIVER_PH, circleMarker } from '../data/defaults';
+import { DAM_CTSI, circleMarker } from '../data/defaults';
 import { greenIcon } from '../utils/Icons';
 
-const RiverStations = () => {
-  const stations = useRiverStations();
-  const isVisible = useLayerVisibility(visibilityFilters.RIVER_STATIONS);
+const DamStations = () => {
+  const stations = useDamStations();
+  const isVisible = useLayerVisibility(visibilityFilters.DAM_STATIONS);
 
   const getColor = ({ mean }) => {
-    if (stations.type === RIVER_RPI) {
-      if (mean > 2 && mean <= 3) {
+    if (stations.type === DAM_CTSI) {
+      if (mean >= 40 && mean <= 50) {
         return stations.legend[1].color;
-      } else if (mean >= 3.1 && mean <= 6) {
-        return stations.legend[2].color;
-      } else if (mean > 6) {
-        return stations.legend[3].color;
-      } else {
+      } else if (mean < 40) {
         return stations.legend[0].color;
-      }
-    } else if (stations.type === RIVER_PH) {
-      if (mean >= 8) {
-        return stations.legend[4].color;
-      } else if (mean >= 7) {
-        return stations.legend[3].color;
-      } else if (mean >= 6) {
+      } else if (mean > 50) {
         return stations.legend[2].color;
-      } else if (mean >= 5) {
-        return stations.legend[1].color;
-      } else {
-        return stations.legend[0].color;
       }
     }
   };
 
-  const generateRiverStationMarkers = () => {
+  const generateDamStationMarkers = () => {
     return stations.data.map(station => (
       <CircleMarker
         fillOpacity={circleMarker.fillOpacity}
@@ -50,6 +36,7 @@ const RiverStations = () => {
         <Popup>
           <b> Station: {station.station_no} </b>
           <br /> {station.address}
+          <br /> {station.lat}, {station.lon}
           <br /> <b>Stats:</b>
           <br /> Min {stations.type}: {station.min}
           <br /> Mean {stations.type}: {station.mean}
@@ -60,9 +47,9 @@ const RiverStations = () => {
   };
 
   if (isVisible) {
-    return stations.data ? generateRiverStationMarkers() : <Spinner />;
+    return stations.data ? generateDamStationMarkers() : <Spinner />;
   }
-  return <Spinner />;
+  return '';
 };
 
-export default RiverStations;
+export default DamStations;

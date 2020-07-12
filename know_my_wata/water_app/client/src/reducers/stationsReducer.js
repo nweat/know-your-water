@@ -6,3 +6,10 @@ export const riverStationsReducer = (state = [], action) => {
   }
   return state;
 };
+
+export const damStationsReducer = (state = [], action) => {
+  if (action.type === actions.GET_DAM_STATIONS) {
+    return action.payload;
+  }
+  return state;
+};

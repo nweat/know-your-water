@@ -1,11 +1,15 @@
 export const defaultLocation = { lat: 23.755182, lon: 120.877075 };
 export const defaultZoom = 11;
 
+export const RIVER_DATASET_NAME = 'river';
+export const DAM_DATASET_NAME = 'dam';
+
 //fields must appear as in the raw dataset
 export const RIVER_RPI = 'rpi';
 export const RIVER_PH = 'PH';
-export const DAM_CTSI = 'CTSI';
+export const DAM_CTSI = 'ctsi';
 export const RIVER_RPI_DEFAULT_YEAR = 2019;
+export const DAM_CTSI_DEFAULT_YEAR = 2019;
 export const DEFAULT_YEARS = [2019, 2018, 2017];
 
 export const selectFilters = {
@@ -19,7 +23,7 @@ export const river = {
   opacity: 1
 };
 
-export const riverStationCircleMarker = {
+export const circleMarker = {
   radius: 4,
   weight: 1,
   fillOpacity: 0.9

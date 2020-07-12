@@ -87,6 +87,10 @@ img#logo {
   margin-bottom: -10px;
 }
 
+.sidenav .collapsible .row {
+  margin-bottom: 0px;
+}
+
 .collapsible-header .expand {
   position: absolute;
   right: 0px;
@@ -136,18 +140,18 @@ img#logo {
 }
 
 /* change colour of filled in check box */
-.checkbox-blue[type='checkbox'].filled-in:checked + span:not(.lever):after {
+[type='radio'].with-gap:checked + span:not(.lever):after {
   border: 2px solid #01b2e1;
   background-color: #01b2e1;
 }
 
-[type='checkbox'] + span:not(.lever) {
+[type='radio'] + span:not(.lever) {
   display: '';
   margin-left: 1rem;
   height: 16px;
 }
 
-[type='checkbox'].filled-in:not(:checked) + span:not(.lever):after {
+[type='radio'].with-gap:not(:checked) + span:not(.lever):after {
   height: 20px;
   width: 20px;
   background-color: transparent;
