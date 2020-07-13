@@ -1,5 +1,6 @@
 import time
 import json
+import os
 import pandas as pd
 import numpy as np
 from flask import Flask, make_response, jsonify, request
@@ -26,8 +27,13 @@ def epa_data_stats():
     FIELD_MISSING = FIELD + '_missing'
     MISSING_VALUE = '--'
     groupBy = []
+    fileDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    dataFolder = os.path.join(fileDir, "data")
+    finalFolder = os.path.join(dataFolder, "final")
+    final = os.path.join(finalFolder, DATA_TYPE + '.json')
+    print(final)
 
-    df = pd.read_json('../data/final/' + DATA_TYPE + '.json')
+    df = pd.read_json(final)
     if request.args.get('year'):
         YEAR = int(request.args.get('year'))
         df = df[df['sampling_year'] == YEAR]

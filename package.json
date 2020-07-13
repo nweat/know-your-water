@@ -1,15 +1,10 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
+  "description": "Solely for building react app in production",
   "engines": {
     "node": "12.x",
     "npm": "6.x"
   },
   "scripts": {
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }
