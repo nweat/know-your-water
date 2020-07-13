@@ -14,6 +14,7 @@ export const visibilityFilterReducer = (state = initState, action) => {
         return { ...item };
       });
       newState.find(item => item.filter === action.payload.filter).visible = action.payload.visible;
+      newState.find(item => item.filter !== action.payload.filter).visible = false;
       return newState;
     default:
       return state;

@@ -16,18 +16,24 @@ def river_stations():
 
 @app.route('/epa_data_stats')
 def epa_data_stats():
-    YEAR = int(request.args.get('year'))
     DATA_TYPE = request.args.get('dtype')
     FIELD = request.args.get('field')
     FIELD_MISSING = FIELD + '_missing'
     MISSING_VALUE = '--'
+    groupBy = []
 
     df = pd.read_json('../data/final/' + DATA_TYPE + '.json')
-    df = df[df['sampling_year'] == YEAR]
+    if request.args.get('year'):
+        YEAR = int(request.args.get('year'))
+        df = df[df['sampling_year'] == YEAR]
+        groupBy = ['sampling_year', 'station_no', 'address', 'lat', 'lon']
+    else:
+        groupBy = ['station_no', 'address', 'lat', 'lon']
+
     df[FIELD] = df[FIELD].replace(MISSING_VALUE, np.nan)
     df = df.astype({FIELD: 'float'})
     df[FIELD_MISSING] = df[FIELD].isna()
-    df = df.groupby(['sampling_year', 'station_no', 'address', 'lat', 'lon']).agg(
+    df = df.groupby(groupBy).agg(
         {
             FIELD: ['min', 'max', 'mean', 'count'],
             FIELD_MISSING: ['sum', 'mean']

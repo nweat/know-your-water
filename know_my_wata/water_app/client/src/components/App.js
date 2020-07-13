@@ -2,17 +2,18 @@ import React from 'react';
 import LeafletMap from './LeafletMap';
 import SideBar from './SideBar';
 import Modal from './Modal';
-//import useRiverStations from '../hooks/useRiverStations';
+import useFieldDescription from '../hooks/useFieldDescription';
 
 const App = () => {
-  //const stations = useRiverStations();
+  const desc = useFieldDescription();
 
   return (
     <div className="row">
       <div className="col s12">
         <SideBar />
         <LeafletMap />
-        <Modal message="test" />
+        <Modal modal="modalRiver" header={desc.river_type} message={desc.river_desc} />
+        <Modal modal="modalDam" header={desc.dam_type} message={desc.dam_desc} />
       </div>
     </div>
   );

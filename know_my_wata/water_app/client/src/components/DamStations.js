@@ -35,11 +35,12 @@ const DamStations = () => {
       >
         <Popup>
           <b> Station: {station.station_no} </b>
-          <br /> {station.address}
-          <br /> {station.lat}, {station.lon}
-          <br /> <b>Stats:</b>
+          <br /> <b> Address:</b> {station.address}
+          <br /> <b> Coordinates:</b> {station.lat}, {station.lon}
+          <br /> <br />
+          <b>Results:</b>
+          <br /> Mean {stations.type}: <b> {station.mean}</b>
           <br /> Min {stations.type}: {station.min}
-          <br /> Mean {stations.type}: {station.mean}
           <br /> Max {stations.type}: {station.max}
         </Popup>
       </CircleMarker>
@@ -52,4 +53,4 @@ const DamStations = () => {
   return '';
 };
 
-export default DamStations;
+export default React.memo(DamStations);

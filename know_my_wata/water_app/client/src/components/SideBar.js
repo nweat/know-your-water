@@ -34,6 +34,8 @@ const SideBar = () => {
             yearList={defaults.DEFAULT_YEARS}
             fieldList={defaults.selectFilters.RIVER_STATIONS}
             stations={useRiverStationsYearType()}
+            modalTarget="#modalRiver"
+            layerActive="active"
           />
         </li>
         <li>
@@ -49,15 +51,53 @@ const SideBar = () => {
             yearList={defaults.DEFAULT_YEARS}
             fieldList={defaults.selectFilters.DAM_STATIONS}
             stations={useDamStationsYearType()}
+            modalTarget="#modalDam"
+            layerActive="not-active"
           />
         </li>
         <li>
           <ul className="collapsible collapsible-accordion">
             <li>
-              <div className="collapsible-header">
-                <i className="material-icons">info</i>How can I help?
+              <div className="row">
+                <div className="col s1"></div>
+                <div className="col s11">
+                  <div className="collapsible-header">
+                    <div className="chip">
+                      <img src="info.png" alt="info.png" />
+                      Know your Water
+                    </div>
+                    <i className="material-icons rotate right expand">expand_more</i>
+                  </div>
+                </div>
               </div>
-              <div className="collapsible-body"></div>
+              <div className="collapsible-body">
+                <div className="col s12 m12">
+                  COMING SOON.. <i className="tiny material-icons">build</i>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <ul className="collapsible collapsible-accordion">
+            <li>
+              <div className="row">
+                <div className="col s1"></div>
+                <div className="col s11">
+                  <div className="collapsible-header">
+                    <div className="chip">
+                      <img src="info.png" alt="info.png" />
+                      What can I do to help?
+                    </div>
+                    <i className="material-icons rotate right expand">expand_more</i>
+                  </div>
+                </div>
+              </div>
+              <div className="collapsible-body">
+                <div className="col s12 m12">
+                  COMING SOON.. <i className="tiny material-icons">build</i>
+                </div>
+              </div>
             </li>
           </ul>
         </li>

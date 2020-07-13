@@ -49,10 +49,12 @@ const RiverStations = () => {
       >
         <Popup>
           <b> Station: {station.station_no} </b>
-          <br /> {station.address}
-          <br /> <b>Stats:</b>
+          <br /> <b> Address:</b> {station.address}
+          <br /> <b> Coordinates:</b> {station.lat}, {station.lon}
+          <br /> <br />
+          <b>Results:</b>
+          <br /> Mean {stations.type}: <b>{station.mean}</b>
           <br /> Min {stations.type}: {station.min}
-          <br /> Mean {stations.type}: {station.mean}
           <br /> Max {stations.type}: {station.max}
         </Popup>
       </CircleMarker>
@@ -62,7 +64,7 @@ const RiverStations = () => {
   if (isVisible) {
     return stations.data ? generateRiverStationMarkers() : <Spinner />;
   }
-  return <Spinner />;
+  return '';
 };
 
-export default RiverStations;
+export default React.memo(RiverStations);

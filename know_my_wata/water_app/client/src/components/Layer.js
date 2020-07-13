@@ -5,7 +5,21 @@ import useLayerVisibility from '../hooks/useLayerVisibility';
 import { setLayerVisibility, fetchEPAStats } from '../actions';
 import Legend from './Legend';
 
-const Layers = ({ layerText, layerIcon, layer, dataType, defaultField, year, action, legend, yearList, fieldList, stations }) => {
+const Layers = ({
+  layerText,
+  layerIcon,
+  layer,
+  dataType,
+  defaultField,
+  year,
+  action,
+  legend,
+  yearList,
+  fieldList,
+  stations,
+  modalTarget,
+  layerActive
+}) => {
   const dispatch = useDispatch();
   const defaultChecked = useLayerVisibility(layer);
 
@@ -45,7 +59,7 @@ const Layers = ({ layerText, layerIcon, layer, dataType, defaultField, year, act
 
   return (
     <ul className="collapsible collapsible-accordion">
-      <li className="active">
+      <li className={layerActive}>
         <div className="row">
           <div className="col s1">
             <label>
@@ -73,8 +87,8 @@ const Layers = ({ layerText, layerIcon, layer, dataType, defaultField, year, act
               <select onChange={e => handleStatChange(e)}>{generateFieldOptions(fieldList)}</select>
             </div>
             <div className="col s1">
-              <a className="modal-trigger" href="#modal1">
-                <i className="material-icons">info</i>
+              <a className="modal-trigger" href={modalTarget}>
+                <i className="material-icons">help</i>
               </a>
             </div>
           </div>
