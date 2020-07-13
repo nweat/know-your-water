@@ -4,7 +4,12 @@ import pandas as pd
 import numpy as np
 from flask import Flask, make_response, jsonify, request
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../client/build', static_url_path='/')
+
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 
 @app.route('/river_stations')
