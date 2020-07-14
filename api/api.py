@@ -31,7 +31,6 @@ def epa_data_stats():
     dataFolder = os.path.join(fileDir, "data")
     finalFolder = os.path.join(dataFolder, "final")
     final = os.path.join(finalFolder, DATA_TYPE + '.json')
-    print(final)
 
     df = pd.read_json(final)
     if request.args.get('year'):

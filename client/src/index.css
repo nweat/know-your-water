@@ -58,6 +58,7 @@ img#logo {
 .sidenav {
   box-shadow: none;
   background-color: rgba(222, 230, 238, 0.9);
+  height: calc(100% + 60px);
 }
 
 .sidenav .collapsible-body,
