@@ -1,17 +1,6 @@
 import React from 'react';
-import useStationLegend from '../hooks/useStationLegend';
-import { RIVER_DATASET_NAME, DAM_DATASET_NAME } from '../data/defaults';
 
-const Legend = ({ type }) => {
-  const legend_state = useStationLegend();
-  let legend;
-
-  if (type === RIVER_DATASET_NAME) {
-    legend = legend_state.river;
-  } else if (type === DAM_DATASET_NAME) {
-    legend = legend_state.dam;
-  }
-
+const Legend = ({ legend }) => {
   const generateLegend = () => {
     return legend.map(legend => {
       return (
@@ -25,7 +14,7 @@ const Legend = ({ type }) => {
   if (legend) {
     return <ul className="collection">{generateLegend()}</ul>;
   }
-  return '';
+  return <div></div>;
 };
 
-export default React.memo(Legend);
+export default Legend;

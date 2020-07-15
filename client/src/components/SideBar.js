@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react';
 import M from 'materialize-css/dist/js/materialize';
-import useRiverStationsYearType from '../hooks/useRiverStationsYearType';
-import useDamStationsYearType from '../hooks/useDamStationsYearType';
 import * as actions from '../actions/types';
 import * as defaults from '../data/defaults';
-import { visibilityFilters } from '../actions';
 import Layer from './Layer';
 
-const SideBar = () => {
+const SideBar = ({ dam, river }) => {
   useEffect(() => {
     let collapsible = document.querySelectorAll('.collapsible');
     let sidenav = document.querySelectorAll('.sidenav');
@@ -23,35 +20,37 @@ const SideBar = () => {
         </li>
         <li>
           <Layer
-            layerText="River Stations"
-            layerIcon="river.png"
-            layer={visibilityFilters.RIVER_STATIONS}
+            layerText={defaults.riverLayerText}
+            layerIcon={defaults.riverLayerLogo}
+            layer={defaults.visibilityFilters.RIVER_STATIONS}
             dataType={defaults.RIVER_DATASET_NAME}
             defaultField={defaults.RIVER_RPI}
             year={defaults.RIVER_RPI_DEFAULT_YEAR}
             action={actions.GET_RIVER_STATIONS}
-            legend={defaults.riverstat_legends}
+            legend={river.legend}
             yearList={defaults.DEFAULT_YEARS}
             fieldList={defaults.selectFilters.RIVER_STATIONS}
-            stations={useRiverStationsYearType()}
-            modalTarget="#modalRiver"
+            selectedYear={river.year}
+            selectedField={river.type}
+            modalTarget={defaults.riverInfoModal}
             layerActive="active"
           />
         </li>
         <li>
           <Layer
-            layerText="Dam Stations"
-            layerIcon="dam.png"
-            layer={visibilityFilters.DAM_STATIONS}
+            layerText={defaults.damLayerText}
+            layerIcon={defaults.damLayerLogo}
+            layer={defaults.visibilityFilters.DAM_STATIONS}
             dataType={defaults.DAM_DATASET_NAME}
             defaultField={defaults.DAM_CTSI}
             year={defaults.DAM_CTSI_DEFAULT_YEAR}
             action={actions.GET_DAM_STATIONS}
-            legend={defaults.damstat_legends}
+            legend={dam.legend}
             yearList={defaults.DEFAULT_YEARS}
             fieldList={defaults.selectFilters.DAM_STATIONS}
-            stations={useDamStationsYearType()}
-            modalTarget="#modalDam"
+            selectedYear={dam.year}
+            selectedField={dam.type}
+            modalTarget={defaults.damInfoModal}
             layerActive="not-active"
           />
         </li>
@@ -106,4 +105,4 @@ const SideBar = () => {
   );
 };
 
-export default React.memo(SideBar);
+export default SideBar;

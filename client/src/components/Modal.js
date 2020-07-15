@@ -8,7 +8,7 @@ const Modal = ({ modal, header, message }) => {
   }, []);
 
   return (
-    <div id={modal} className="modal bottom-sheet">
+    <div id={modal} className="modal">
       <div className="modal-content">
         <h4 style={{ textTransform: 'uppercase' }}>{header}</h4>
         <p>{message}</p>

@@ -1,15 +1,15 @@
 import React from 'react';
 import { GeoJSON } from 'react-leaflet';
-import Spinner from './Spinner';
 import rivers_geojson from '../geojson/rivers_geocoded_nominatum.json';
 import { river } from '../data/defaults';
 
 const Rivers = () => {
   const geoJSONStyle = () => {
+    const { color, weight, opacity } = river;
     return {
-      color: river.color,
-      weight: river.weight,
-      opacity: river.opacity
+      color,
+      weight,
+      opacity
     };
   };
 
@@ -18,10 +18,7 @@ const Rivers = () => {
     layer.bindPopup(popupContent);
   };
 
-  if (rivers_geojson) {
-    return <GeoJSON onEachFeature={onEachFeature} data={rivers_geojson['data']} style={geoJSONStyle} />;
-  }
-  return <Spinner />;
+  return <GeoJSON onEachFeature={onEachFeature} data={rivers_geojson['data']} style={geoJSONStyle} />;
 };
 
 export default Rivers;

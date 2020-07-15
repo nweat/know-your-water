@@ -4,8 +4,6 @@ import { setDefaultLocation } from '../actions';
 
 const useDefaultLocation = () => {
   const location = useSelector(state => state.default_location);
-  //console.log('location');
-  //console.log(location);
   const dispatch = useDispatch();
 
   useEffect(() => {

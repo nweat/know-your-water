@@ -1,1 +1,1 @@
-web: gunicorn -c gunicorn.conf.py 'api.api:app'
+web: gunicorn -c gunicorn.conf.py 'api.api:app' --preload --max-requests 1200

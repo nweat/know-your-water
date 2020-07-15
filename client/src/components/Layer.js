@@ -5,7 +5,7 @@ import useLayerVisibility from '../hooks/useLayerVisibility';
 import { setLayerVisibility, fetchEPAStats } from '../actions';
 import Legend from './Legend';
 
-const Layers = ({
+const Layer = ({
   layerText,
   layerIcon,
   layer,
@@ -16,7 +16,8 @@ const Layers = ({
   legend,
   yearList,
   fieldList,
-  stations,
+  selectedYear,
+  selectedField,
   modalTarget,
   layerActive
 }) => {
@@ -26,7 +27,7 @@ const Layers = ({
   useEffect(() => {
     let select = document.querySelectorAll('select');
     M.FormSelect.init(select, {});
-    dispatch(fetchEPAStats(defaultField, year, action, legend, dataType));
+    dispatch(fetchEPAStats(defaultField, year, action, dataType));
   }, []);
 
   function handleLayerVisibility(e, filterFor) {
@@ -34,11 +35,11 @@ const Layers = ({
   }
 
   function handleStatChange(e) {
-    dispatch(fetchEPAStats(e.target.value, stations.year, action, legend, dataType));
+    dispatch(fetchEPAStats(e.target.value, selectedYear, action, dataType));
   }
 
   function handleYearChange(e) {
-    dispatch(fetchEPAStats(stations.type, e.target.value, action, legend, dataType));
+    dispatch(fetchEPAStats(selectedField, e.target.value, action, dataType));
   }
 
   const generateFieldOptions = list => {
@@ -87,14 +88,14 @@ const Layers = ({
               <select onChange={e => handleStatChange(e)}>{generateFieldOptions(fieldList)}</select>
             </div>
             <div className="col s1">
-              <a className="modal-trigger" href={modalTarget}>
+              <a className="modal-trigger" href={`#${modalTarget}`}>
                 <i className="material-icons">help</i>
               </a>
             </div>
           </div>
 
           <div className="col s12">
-            <Legend type={dataType} />
+            <Legend legend={legend} />
           </div>
         </div>
       </li>
@@ -102,4 +103,4 @@ const Layers = ({
   );
 };
 
-export default React.memo(Layers);
+export default Layer;

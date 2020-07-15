@@ -1,5 +1,5 @@
 import * as actions from '../actions/types';
-import { visibilityFilters } from '../actions';
+import { visibilityFilters } from '../data/defaults';
 
 const initState = [
   { filter: visibilityFilters.RIVER_STATIONS, visible: true },

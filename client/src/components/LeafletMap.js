@@ -2,26 +2,31 @@ import React from 'react';
 import { Map, TileLayer, ZoomControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import Rivers from './Rivers';
-import RiverStations from './RiverStations';
-import DamStations from './DamStations';
+import Station from './Station';
 import useDefaultLocation from '../hooks/useDefaultLocation';
-import { defaultZoom } from '../data/defaults';
+import useLayerVisibility from '../hooks/useLayerVisibility';
+import { defaultZoom, visibilityFilters, zoomControl, zoomControlPostion, attribution, mapBoxURL, mapID } from '../data/defaults';
 
-const LeafletMap = () => {
+const LeafletMap = ({ dam, river }) => {
   const { lat, lon } = useDefaultLocation();
+  const isVisibleRiver = useLayerVisibility(visibilityFilters.RIVER_STATIONS);
+  const isVisibleDam = useLayerVisibility(visibilityFilters.DAM_STATIONS);
   const position = [lat, lon];
 
+  const renderStations = () => {
+    if (isVisibleRiver) {
+      return <Station stations={river} />;
+    } else if (isVisibleDam) {
+      return <Station stations={dam} />;
+    }
+  };
+
   return (
-    <Map center={position} zoom={defaultZoom} zoomControl={false}>
-      <TileLayer
-        attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-        url="https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibndlYXQiLCJhIjoiY2syMGZ0bzBmMDBhaTNvbzNsNm9mdmJyeCJ9.DN7vZvDaDUa-JLaP5gXQjQ"
-        id="mapbox/streets-v11"
-      />
-      <ZoomControl position="bottomright" />
+    <Map center={position} zoom={defaultZoom} zoomControl={zoomControl}>
+      <TileLayer attribution={attribution} url={mapBoxURL} id={mapID} />
+      <ZoomControl position={zoomControlPostion} />
       <Rivers />
-      <RiverStations />
-      <DamStations />
+      {renderStations()}
     </Map>
   );
 };

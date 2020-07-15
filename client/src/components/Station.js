@@ -1,16 +1,9 @@
 import React from 'react';
-import { CircleMarker, Popup, Marker } from 'react-leaflet';
-import { visibilityFilters } from '../actions';
-import useRiverStations from '../hooks/useRiverStations';
-import useLayerVisibility from '../hooks/useLayerVisibility';
-import Spinner from './Spinner';
-import { RIVER_RPI, RIVER_PH, circleMarker } from '../data/defaults';
-import { greenIcon } from '../utils/Icons';
+import { CircleMarker, Popup } from 'react-leaflet';
+import { RIVER_RPI, RIVER_PH, DAM_CTSI, circleMarker } from '../data/defaults';
 
-const RiverStations = () => {
-  const stations = useRiverStations();
-  const isVisible = useLayerVisibility(visibilityFilters.RIVER_STATIONS);
-
+const Station = ({ stations }) => {
+  //assign station color
   const getColor = ({ mean }) => {
     if (stations.type === RIVER_RPI) {
       if (mean > 2 && mean <= 3) {
@@ -34,10 +27,18 @@ const RiverStations = () => {
       } else {
         return stations.legend[0].color;
       }
+    } else if (stations.type === DAM_CTSI) {
+      if (mean >= 40 && mean <= 50) {
+        return stations.legend[1].color;
+      } else if (mean < 40) {
+        return stations.legend[0].color;
+      } else if (mean > 50) {
+        return stations.legend[2].color;
+      }
     }
   };
 
-  const generateRiverStationMarkers = () => {
+  const generateStationMarkers = () => {
     return stations.data.map(station => (
       <CircleMarker
         fillOpacity={circleMarker.fillOpacity}
@@ -61,10 +62,11 @@ const RiverStations = () => {
     ));
   };
 
-  if (isVisible) {
-    return stations.data ? generateRiverStationMarkers() : <Spinner />;
+  if (stations.data) {
+    return generateStationMarkers();
   }
-  return '';
+
+  return <div></div>;
 };
 
-export default React.memo(RiverStations);
+export default Station;

@@ -2,5 +2,4 @@ import os
 
 port = int(os.environ.get("PORT", 5000))
 host = '0.0.0.0'
-worker_class = 'gevent'  # necessary
-timeout = 90  # not necessary
+worker_class = 'gevent'

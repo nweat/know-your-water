@@ -1,5 +1,25 @@
+//map settings
 export const defaultLocation = { lat: 23.755182, lon: 120.877075 };
 export const defaultZoom = 10;
+export const zoomControl = false;
+export const zoomControlPostion = 'bottomright';
+export const attribution =
+  'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
+export const mapBoxURL =
+  'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibndlYXQiLCJhIjoiY2syMGZ0bzBmMDBhaTNvbzNsNm9mdmJyeCJ9.DN7vZvDaDUa-JLaP5gXQjQ';
+export const mapID = 'mapbox/streets-v11';
+
+//default geolocation settings
+export const enableHighAccuracy = true;
+export const timeout = 5000;
+export const maximumAge = 0;
+
+//visibility filters
+export const visibilityFilters = {
+  RIVER_STATIONS: 'RIVER_STATIONS',
+  GDWATER_STATIONS: 'GDWATER_STATIONS',
+  DAM_STATIONS: 'DAM_STATIONS'
+};
 
 //EPA dataset names - name of JSON in data/final/*.json
 export const RIVER_DATASET_NAME = 'river';
@@ -29,14 +49,25 @@ export const river = {
   opacity: 1
 };
 
+//station circle marker settings
 export const circleMarker = {
   radius: 4,
   weight: 1,
   fillOpacity: 0.9
 };
 
-//legends
-export const riverstat_legends = [
+//river station sidebar settings
+export const riverLayerText = 'River Stations';
+export const riverLayerLogo = 'river.png';
+export const riverInfoModal = 'modalRiver';
+
+//dam station sidebar settings
+export const damLayerText = 'Dam Stations';
+export const damLayerLogo = 'dam.png';
+export const damInfoModal = 'modalDam';
+
+//all legends
+export const legends = [
   {
     type: RIVER_RPI,
     description:
@@ -85,10 +116,7 @@ export const riverstat_legends = [
         color: '#138D75'
       }
     ]
-  }
-];
-
-export const damstat_legends = [
+  },
   {
     type: DAM_CTSI,
     description:
