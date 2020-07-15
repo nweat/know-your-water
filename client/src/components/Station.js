@@ -66,7 +66,7 @@ const Station = ({ stations }) => {
     return generateStationMarkers();
   }
 
-  return <div></div>;
+  return null;
 };
 
 export default Station;

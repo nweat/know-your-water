@@ -14,14 +14,12 @@ const App = () => {
   const isPending = useLoadingStatus();
 
   return (
-    <div className="row">
-      <div className="col s12">
-        <SideBar dam={dam} river={river} />
-        <LeafletMap dam={dam} river={river} />
-        <Modal modal={riverInfoModal} header={river.type} message={river.description} />
-        <Modal modal={damInfoModal} header={dam.type} message={dam.description} />
-        <Spinner isPending={isPending} />
-      </div>
+    <div>
+      <SideBar dam={dam} river={river} />
+      <LeafletMap dam={dam} river={river} />
+      <Modal modal={riverInfoModal} header={river.type} message={river.description} />
+      <Modal modal={damInfoModal} header={dam.type} message={dam.description} />
+      <Spinner isPending={isPending} />
     </div>
   );
 };

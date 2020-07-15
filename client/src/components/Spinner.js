@@ -18,7 +18,7 @@ const Spinner = ({ isPending }) => {
       </div>
     );
   } else {
-    return <div></div>;
+    return null;
   }
 };
 

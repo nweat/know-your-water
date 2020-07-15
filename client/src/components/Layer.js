@@ -79,18 +79,20 @@ const Layer = ({
         </div>
 
         <div className="collapsible-body">
-          <div className="col s12">
-            <div className="col s4">
-              <select onChange={e => handleYearChange(e)}>{generateYearList()}</select>
-            </div>
-            <div className="col s1"></div>
-            <div className="col s4">
-              <select onChange={e => handleStatChange(e)}>{generateFieldOptions(fieldList)}</select>
-            </div>
-            <div className="col s1">
-              <a className="modal-trigger" href={`#${modalTarget}`}>
-                <i className="material-icons">help</i>
-              </a>
+          <div className="row">
+            <div className="col s12">
+              <div className="col s4">
+                <select onChange={e => handleYearChange(e)}>{generateYearList()}</select>
+              </div>
+              <div className="col s1"></div>
+              <div className="col s4">
+                <select onChange={e => handleStatChange(e)}>{generateFieldOptions(fieldList)}</select>
+              </div>
+              <div className="col s1">
+                <a className="modal-trigger" href={`#${modalTarget}`}>
+                  <i className="material-icons">help</i>
+                </a>
+              </div>
             </div>
           </div>
 
