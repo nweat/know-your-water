@@ -16,7 +16,15 @@ const SideBar = ({ dam, river }) => {
     <div>
       <ul id="slide-out" className="sidenav sidenav-fixed">
         <li>
-          <img src="logo.png" id="logo" alt="logo" />
+          <div className="user-view">
+            <div className="background">
+              <img src="logo.png" id="logo" alt="logo" />
+            </div>
+            <div className="row"></div>
+            <div className="row"></div>
+            <div className="version">Version {process.env.REACT_APP_VERSION}</div>
+            <div className="row"></div>
+          </div>
         </li>
         <li>
           <Layer

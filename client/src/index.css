@@ -45,6 +45,15 @@ img#logo {
 }
 
 /* override materialize css */
+.modal {
+  /*left: -31rem; */
+  border-radius: 10px;
+  width: 29%;
+}
+
+.modal-overlay {
+  /*background: none;*/
+}
 
 .modal-trigger .material-icons {
   margin-left: 15px;
@@ -177,4 +186,14 @@ select {
 
 select:focus {
   outline: 1px solid transparent;
+}
+
+.version {
+  height: 32px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 32px;
+  padding: 0 12px;
+  text-align: center;
 }
