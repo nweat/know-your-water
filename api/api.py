@@ -6,18 +6,19 @@ import numpy as np
 from flask import Flask, make_response, jsonify, request
 
 app = Flask(__name__, static_folder='../client/build', static_url_path='/')
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
 
 
-@app.route('/river_stations')
-def river_stations():
-    with open('../../data_exploration/river_stations.json', 'r', encoding='utf-8') as json_file:
-        result = json.load(json_file)
-    return jsonify(result)
+@app.route('/pollution_sources')
+def pollution_sources():
+    final = os.path.join(os.path.join(os.path.join(BASE_DIR, "data"), "pollution_sources"),  'pollution_sources.json')
+    df = pd.read_json(final)
+    df_json = df.to_json(orient='records')
+    return df_json
 
 
 @app.route('/epa_data_stats')
@@ -27,10 +28,7 @@ def epa_data_stats():
     FIELD_MISSING = FIELD + '_missing'
     MISSING_VALUE = '--'
     groupBy = []
-    fileDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    dataFolder = os.path.join(fileDir, "data")
-    finalFolder = os.path.join(dataFolder, "final")
-    final = os.path.join(finalFolder, DATA_TYPE + '.json')
+    final = os.path.join(os.path.join(os.path.join(BASE_DIR, "data"), "final"), DATA_TYPE + '.json')
 
     df = pd.read_json(final)
     if request.args.get('year'):
