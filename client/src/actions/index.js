@@ -2,6 +2,18 @@ import * as actions from './types';
 import { defaultYear, enableHighAccuracy, timeout, maximumAge, legends } from '../data/defaults';
 import axios from 'axios';
 
+export const fetchPollutionSources = () => async dispatch => {
+  let url = '/pollution_sources';
+
+  const response = await axios.get(url);
+  dispatch({
+    type: actions.GET_POLLUTION_SOURCES,
+    payload: {
+      data: response.data
+    }
+  });
+};
+
 export const fetchEPAStats = (field, year, action_type, data_type) => async dispatch => {
   let url = '';
   //dispatch to set isPending to true to handle loading, is there a better way to do this?
