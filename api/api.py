@@ -38,6 +38,7 @@ def epa_data_stats():
     else:
         groupBy = ['station_no', 'address', 'lat', 'lon']
 
+    df[FIELD] = df[FIELD].str.replace('<', '')
     df[FIELD] = df[FIELD].replace(MISSING_VALUE, np.nan)
     df = df.astype({FIELD: 'float'})
     df[FIELD_MISSING] = df[FIELD].isna()

@@ -1,6 +1,6 @@
 import React from 'react';
 import { CircleMarker, Popup } from 'react-leaflet';
-import { RIVER_RPI, RIVER_PH, DAM_CTSI, circleMarker } from '../data/defaults';
+import { RIVER_RPI, RIVER_PH, DAM_CTSI, COD, circleMarker } from '../data/defaults';
 
 const Station = ({ stations }) => {
   //assign station color
@@ -16,6 +16,7 @@ const Station = ({ stations }) => {
         return stations.legend[0].color;
       }
     } else if (stations.type === RIVER_PH) {
+      //use same for Dam
       if (mean >= 8) {
         return stations.legend[4].color;
       } else if (mean >= 7) {
@@ -34,6 +35,12 @@ const Station = ({ stations }) => {
         return stations.legend[0].color;
       } else if (mean > 50) {
         return stations.legend[2].color;
+      }
+    } else if (stations.type === COD) {
+      if (mean >= 20) {
+        return stations.legend[1].color;
+      } else {
+        return stations.legend[0].color;
       }
     }
   };

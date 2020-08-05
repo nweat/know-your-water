@@ -30,11 +30,13 @@ export const DAM_DATASET_NAME = 'dam';
 export const RIVER_RPI = 'rpi';
 export const RIVER_PH = 'PH';
 export const DAM_CTSI = 'ctsi';
+export const DAM_PH = 'PH';
+export const COD = 'cod';
 
 //define field list to be used for generating select field options
 export const selectFilters = {
-  RIVER_STATIONS: [RIVER_RPI, RIVER_PH],
-  DAM_STATIONS: [DAM_CTSI]
+  RIVER_STATIONS: [RIVER_RPI, RIVER_PH, COD],
+  DAM_STATIONS: [DAM_CTSI, DAM_PH, COD]
 };
 
 //define default years to be used for generating select year options
@@ -98,23 +100,23 @@ export const legends = [
     legend: [
       {
         name: '4',
-        color: '#DC7633'
+        color: '#D90259'
       },
       {
         name: '5',
-        color: '#EB984E '
+        color: '#E3625B '
       },
       {
         name: '6',
-        color: '#F5B041'
+        color: '#DF9A3F'
       },
       {
         name: '7',
-        color: '#F4D03F'
+        color: '#9D9F56'
       },
       {
-        name: '8+',
-        color: '#138D75'
+        name: '8',
+        color: '#717287'
       }
     ]
   },
@@ -134,6 +136,46 @@ export const legends = [
       {
         name: 'Eutrophic (> 50)',
         color: '#B40C0C'
+      }
+    ]
+  },
+  {
+    type: DAM_PH,
+    description: 'pH is a measure of how acidic water is. The ideal pH level of drinking water should be between 6 - 8.5',
+    legend: [
+      {
+        name: '4',
+        color: '#D90259'
+      },
+      {
+        name: '5',
+        color: '#E3625B '
+      },
+      {
+        name: '6',
+        color: '#DF9A3F'
+      },
+      {
+        name: '7',
+        color: '#9D9F56'
+      },
+      {
+        name: '8',
+        color: '#717287'
+      }
+    ]
+  },
+  {
+    type: COD,
+    description: 'Chemical Oxygen Demand (COD) indicates the amount of organic matter in the water',
+    legend: [
+      {
+        name: '< 25',
+        color: '#40af08'
+      },
+      {
+        name: '>= 25',
+        color: '#b40c0c '
       }
     ]
   }
