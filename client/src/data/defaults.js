@@ -18,7 +18,8 @@ export const maximumAge = 0;
 export const visibilityFilters = {
   RIVER_STATIONS: 'RIVER_STATIONS',
   GDWATER_STATIONS: 'GDWATER_STATIONS',
-  DAM_STATIONS: 'DAM_STATIONS'
+  DAM_STATIONS: 'DAM_STATIONS',
+  POLLUTION_SOURCES: 'POLLUTION_SOURCES'
 };
 
 //EPA dataset names - name of JSON in data/final/*.json
@@ -132,7 +133,7 @@ export const legends = [
       },
       {
         name: 'Eutrophic (> 50)',
-        color: '#B40C0C '
+        color: '#B40C0C'
       }
     ]
   }

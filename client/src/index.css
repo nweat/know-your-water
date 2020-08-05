@@ -77,6 +77,11 @@ img#logo {
   background-color: rgba(222, 230, 238, 0.9);
 }
 
+.sidenav .collapsible-body #info {
+  line-height: 30px;
+  padding: 10px;
+}
+
 .sidenav .collapsible-header {
   border-bottom: 1px solid #ddd;
   line-height: 30px;
@@ -150,7 +155,11 @@ img#logo {
   }
 }
 
-/* change colour of filled in check box */
+[type='checkbox'].filled-in:checked + span:not(.lever):after {
+  border: 2px solid #01b2e1;
+  background-color: #01b2e1;
+}
+
 [type='radio'].with-gap:checked + span:not(.lever):after {
   border: 2px solid #01b2e1;
   background-color: #01b2e1;

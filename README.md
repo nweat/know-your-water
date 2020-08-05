@@ -17,6 +17,12 @@ pip install geocoder
 jupyter notebook
 ```
 
+### Run Flask
+
+```
+flask run
+```
+
 ### Open notebook
 
 ```

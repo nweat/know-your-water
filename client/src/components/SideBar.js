@@ -1,10 +1,16 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import M from 'materialize-css/dist/js/materialize';
 import * as actions from '../actions/types';
 import * as defaults from '../data/defaults';
+import { setLayerVisibility } from '../actions';
+import useLayerVisibility from '../hooks/useLayerVisibility';
 import Layer from './Layer';
 
 const SideBar = ({ dam, river }) => {
+  const dispatch = useDispatch();
+  const defaultChecked = useLayerVisibility(defaults.visibilityFilters.POLLUTION_SOURCES);
+
   useEffect(() => {
     let collapsible = document.querySelectorAll('.collapsible');
     let sidenav = document.querySelectorAll('.sidenav');
@@ -62,29 +68,44 @@ const SideBar = ({ dam, river }) => {
             layerActive="not-active"
           />
         </li>
+
         <li>
           <ul className="collapsible collapsible-accordion">
-            <li>
+            <li className="not-active">
               <div className="row">
                 <div className="col s1"></div>
                 <div className="col s11">
                   <div className="collapsible-header">
                     <div className="chip">
-                      <img src="info.png" alt="info.png" />
-                      Know your Water
+                      <img src="factory.png" alt="factory.png" />
+                      Pollution sources
                     </div>
                     <i className="material-icons rotate right expand">expand_more</i>
                   </div>
                 </div>
               </div>
               <div className="collapsible-body">
-                <div className="col s12 m12">
-                  COMING SOON.. <i className="tiny material-icons">build</i>
+                <div className="row">
+                  <div className="col s12">
+                    <div className="col s1"></div>
+                    <div className="col s9">
+                      <label>
+                        <input
+                          type="checkbox"
+                          className="filled-in"
+                          checked={defaultChecked}
+                          onChange={e => dispatch(setLayerVisibility(e.target.checked, defaults.visibilityFilters.POLLUTION_SOURCES))}
+                        />
+                        <span>Pollution Sources</span>
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </div>
             </li>
           </ul>
         </li>
+
         <li>
           <ul className="collapsible collapsible-accordion">
             <li>
@@ -101,8 +122,12 @@ const SideBar = ({ dam, river }) => {
                 </div>
               </div>
               <div className="collapsible-body">
-                <div className="col s12 m12">
-                  COMING SOON.. <i className="tiny material-icons">build</i>
+                <div className="col s12 m12" id="info">
+                  Participate in the{' '}
+                  <a target="_blank" rel="noopener noreferrer" href="https://www.monitorwater.org/">
+                    EarthEcho Water Challenge
+                  </a>
+                  ! Take action and be aware of the water quality around you.
                 </div>
               </div>
             </li>

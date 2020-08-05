@@ -1,4 +1,5 @@
 import L from 'leaflet';
+import factory from './factory.png';
 
 export function setDefaultIcon() {
   delete L.Icon.Default.prototype._getIconUrl;
@@ -12,6 +13,11 @@ export function setDefaultIcon() {
 export const firefoxIcon = L.icon({
   iconUrl: 'https://image.flaticon.com/icons/svg/1423/1423052.svg',
   iconSize: [50, 50] // size of the icon
+});
+
+export const pollutionSourceIcon = L.icon({
+  iconUrl: factory,
+  iconSize: [25, 25] // size of the icon
 });
 
 export const greenIcon = new L.Icon({
