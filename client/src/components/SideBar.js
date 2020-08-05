@@ -29,6 +29,16 @@ const SideBar = ({ dam, river }) => {
             <div className="row"></div>
             <div className="row"></div>
             <div className="version">Version {process.env.REACT_APP_VERSION}</div>
+            <div className="version">
+              Data Sources:
+              <a target="_blank" rel="noopener noreferrer" href="https://wq.epa.gov.tw/Code/Business/Statutory.aspx">
+                EPA
+              </a>
+              /
+              <a target="_blank" rel="noopener noreferrer" href="https://data.gov.tw/dataset/6362">
+                Open Data
+              </a>
+            </div>
             <div className="row"></div>
           </div>
         </li>
