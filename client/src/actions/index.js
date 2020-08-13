@@ -33,7 +33,8 @@ export const fetchEPAStats = (field, year, action_type, data_type) => async disp
   dispatch({
     type: action_type,
     payload: {
-      data: response.data,
+      stats: response.data.stats,
+      raw: response.data.raw,
       type: field,
       year,
       legend,

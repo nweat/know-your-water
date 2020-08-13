@@ -28,20 +28,26 @@ def epa_data_stats():
     FIELD_MISSING = FIELD + '_missing'
     MISSING_VALUE = '--'
     groupBy = []
+    groupByRaw = []
+    raw_data = []
     final = os.path.join(os.path.join(os.path.join(BASE_DIR, "data"), "final"), DATA_TYPE + '.json')
 
     df = pd.read_json(final)
     if request.args.get('year'):
         YEAR = int(request.args.get('year'))
         df = df[df['sampling_year'] == YEAR]
-        groupBy = ['sampling_year', 'station_no', 'address', 'lat', 'lon']
+        groupBy = ['station_no', 'address', 'lat', 'lon']
+        groupByRaw = ['station_no', 'sampling_month_year']
     else:
         groupBy = ['station_no', 'address', 'lat', 'lon']
+        groupByRaw = ['station_no', 'sampling_month_year']
 
     df[FIELD] = df[FIELD].str.replace('<', '')
     df[FIELD] = df[FIELD].replace(MISSING_VALUE, np.nan)
     df = df.astype({FIELD: 'float'})
     df[FIELD_MISSING] = df[FIELD].isna()
+    river_raw = df.groupby(groupByRaw, as_index=False)[FIELD].sum()
+
     df = df.groupby(groupBy).agg(
         {
             FIELD: ['min', 'max', 'mean', 'count'],
@@ -63,5 +69,20 @@ def epa_data_stats():
     }, inplace=True)
     df = df.reset_index()
     df = df.dropna(how='any', subset=['min'])
+
+    # get raw data by month
+    raw_data = {}
+    stations = river_raw['station_no'].unique()
+    for station in stations:
+        months = [{'x':1, 'y':0},{'x':2, 'y':0},{'x':3, 'y':0},{'x':4, 'y':0},{'x':5, 'y':0},{'x':6, 'y':0},
+              {'x':7, 'y':0},{'x':8, 'y':0},{'x':9, 'y':0},{'x':10, 'y':0},{'x':11, 'y':0},{'x':12, 'y':0}]
+        data = river_raw[river_raw['station_no'] == station]
+        for idx, row in data.iterrows():
+            months[int(row['sampling_month_year']) - 1]['y'] = round(row[FIELD], 2)
+        station = str(station)
+        raw_data[station] = months
+
+    # print(raw_data)
     df_json = df.to_json(orient='records')
-    return df_json
+    data = {'stats': json.loads(df_json), 'raw': raw_data}
+    return data
