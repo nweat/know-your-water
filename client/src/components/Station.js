@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CircleMarker, Popup } from 'react-leaflet';
 import { RIVER_RPI, RIVER_PH, DAM_CTSI, COD, circleMarker } from '../data/defaults';
-import 'react-vis/dist/style.css';
-import { XYPlot, LineMarkSeries, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, Crosshair } from 'react-vis';
+import LineChart from './LineChart';
 
 const Station = ({ stations }) => {
   //assign station color
@@ -47,42 +46,6 @@ const Station = ({ stations }) => {
     }
   };
 
-  const [val, setVal] = useState();
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
-
-  const drawLineChart = data => {
-    return (
-      <XYPlot height={300} width={300}>
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <XAxis title="Month" position="middle" />
-        <YAxis title="Value" position="middle" />
-        <LineMarkSeries
-          data={data}
-          style={{
-            strokeWidth: '3px'
-          }}
-          lineStyle={{ stroke: 'black' }}
-          markStyle={{ stroke: 'blue' }}
-          style={{ strokeLinejoin: 'round' }}
-          onValueMouseOver={datapoint => {
-            setVal([datapoint]);
-          }}
-        />
-        {val && (
-          <Crosshair values={val}>
-            <div style={{ background: 'black', width: '60px', fontSize: '14px', borderRadius: '5px', textAlign: 'center' }}>
-              <p>
-                X: <b>{val[0].x}</b> <br />
-                Y: <b>{val[0].y}</b>
-              </p>
-            </div>
-          </Crosshair>
-        )}
-      </XYPlot>
-    );
-  };
-
   const generateStationMarkers = () => {
     return stations.stats.map(station => (
       <CircleMarker
@@ -102,7 +65,7 @@ const Station = ({ stations }) => {
           <br /> Mean {stations.type}: <b>{station.mean}</b>
           <br /> Min {stations.type}: {station.min}
           <br /> Max {stations.type}: {station.max}
-          {drawLineChart(stations.raw[station.station_no])}
+          <LineChart data={stations.raw[station.station_no]} />
         </Popup>
       </CircleMarker>
     ));
