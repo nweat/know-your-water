@@ -1,30 +1,18 @@
-### Data preparation and exploration with Jupyter notebook
+# Know Your Water
 
-Prepare data and generate JSON files which will be consumed on the client side
+Submission idea for People's Livelihood Public IOT Data Competition (Taiwan). The goal was to create an application where the community can quickly access relevant information on water sources particularly rivers and reservoirs around them.
 
-### Pre-requisites
+- Front end: React/Redux/React-Leaflet/React-Vis
+- Back end: Pandas/Flask
+
+<br> 
+
+### Jupyter notebook setup
 
 ```
 pip install pandas
 pip install notebook
 pip install simplejson
 pip install geocoder
-```
-
-### Run Jupyter
-
-```
 jupyter notebook
-```
-
-### Run Flask
-
-```
-flask run
-```
-
-### Open notebook
-
-```
-data_exploration.ipynb
 ```
